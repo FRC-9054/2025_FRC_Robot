@@ -109,6 +109,9 @@ const int                 xButton =  3;
 const int                 yButton =  4;
 const int                lTrigger =  2;
 const int                rTrigger =  3;
+const int                   POVup =  0;
+const int                 POVdown =  180;
+
 }  // namespace OIConstants
 
 namespace OIControllMapping {
@@ -122,3 +125,16 @@ namespace AlgeeIntakeConstants {
     const int intakeMotor1CANID = 20;
     const int algeeDetectionLimmitSwichPort = 0;
 }
+
+namespace CoralIntakeConstants {
+    const int intakeMotorCoralCANID = 21;
+    const int coralDetector = 99;
+}
+
+namespace ElevatorConstants {
+    const int MotorElevatorCANID = 22;
+    const int ElevatorID = 1;
+}
+
+
+
