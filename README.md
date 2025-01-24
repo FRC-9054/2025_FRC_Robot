@@ -108,7 +108,8 @@ built, but not deployed. Refference the chart below for more details
         ________________|__(Initials)__|_____________________________________________________________________________________________________
          V1.0.0 (B)     |  RAT         |   Initial commit. Started from the rev swerve example code and added an algee intake subsystem with
                         |              |       a couple of empty commands. More needs to be done to make this a functional subsystem.
-        
+         V1.0.1 (B)     |  DAH         |   added code to algae intake and outtake functions
+         V1.1.0 (B)     |  DAH         |   added coral intake and outtake subsystem
          !!!!!!!!!!UPDATE VERSION HISTORY BEFORE COMMIT!!!!!!!!!!
     !!!!!!!!!!UPDATE VERSION HISTORY BEFORE COMMIT!!!!!!!!!!
                   !!!!!!!!!!UPDATE VERSION HISTORY BEFORE COMMIT!!!!!!!!!!
