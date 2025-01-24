@@ -110,6 +110,9 @@ built, but not deployed. Refference the chart below for more details
                         |              |       a couple of empty commands. More needs to be done to make this a functional subsystem.
          V1.0.1 (B)     |  DAH         |   added code to algae intake and outtake functions
          V1.1.0 (B)     |  DAH         |   added coral intake and outtake subsystem
+         V1.2.0 (B)     |  DAH         |   added elevator system
+         V1.2.1 (B)     |  DAH         |   Variables addedd to constants file for several subsystems
+         V1.3.0 (B)     |  DAH         |   added code to elevator subsystem
          !!!!!!!!!!UPDATE VERSION HISTORY BEFORE COMMIT!!!!!!!!!!
     !!!!!!!!!!UPDATE VERSION HISTORY BEFORE COMMIT!!!!!!!!!!
                   !!!!!!!!!!UPDATE VERSION HISTORY BEFORE COMMIT!!!!!!!!!!
