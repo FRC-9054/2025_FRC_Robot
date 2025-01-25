@@ -27,10 +27,3 @@ void CoralIntake::PlaceCoral() {
      m_coralIntakeMotorController.Set(1.0);
 
 }
-
-//Hi Quaid :)
-
-
-/*Damien, continue to work on the subsystems, and
-I will help you with the github uploading when I
-get back*/
