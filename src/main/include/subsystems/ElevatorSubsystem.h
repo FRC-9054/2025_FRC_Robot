@@ -11,9 +11,9 @@
 
 using namespace rev::spark;
 
-class elevator : public frc2::SubsystemBase {
+class ElevatorSubsystem : public frc2::SubsystemBase {
  public:
-  elevator();
+  ElevatorSubsystem();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.

@@ -17,6 +17,9 @@
 
 #include "Constants.h"
 #include "subsystems/DriveSubsystem.h"
+#include "subsystems/AlgeeIntake.h"
+#include "subsystems/CoralIntake.h"
+#include "subsystems/ElevatorSubsystem.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -35,11 +38,15 @@ class RobotContainer {
   // The driver's controller
   // frc::XboxController m_driverController{OIConstants::kDriverControllerPort};
   frc::GenericHID m_driverController{OIConstants::kDriverControllerPort};
+  frc::GenericHID m_operatorController{OIConstants::kOperatorControllerPort};
 
   // The robot's subsystems and commands are defined here...
 
   // The robot's subsystems
   DriveSubsystem m_drive;
+  AlgeeIntake m_intakeAlgae;
+  CoralIntake m_intakeCoral;
+  ElevatorSubsystem m_elevate;
 
   // The chooser for the autonomous routines
   frc::SendableChooser<frc2::Command*> m_chooser;

@@ -54,6 +54,24 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton(&m_driverController,
                        OIControllMapping::setBreaks)
       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
+
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
+        .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.IntakeAlgee(); }, {&m_intakeAlgae}));
+
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
+        .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
+
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
+        .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.IntakeCoral(); }, {&m_intakeCoral}));
+
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
+        .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.PlaceCoral(); }, {&m_intakeCoral}));
+
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
+        .WhileTrue(new frc2::RunCommand([this] { m_elevate; }, {&m_elevate}));
+
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorDown)
+        .WhileTrue(new frc2::RunCommand([this] { m_elevate; }, {&m_elevate}));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
