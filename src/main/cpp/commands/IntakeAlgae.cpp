@@ -11,6 +11,7 @@
 #if DEBUG
   #define dbgln(x) std::cout << "DEBUG::   :" << x << std::endl;
 #else
+  #define dbgln(x)
 #endif
 
 
