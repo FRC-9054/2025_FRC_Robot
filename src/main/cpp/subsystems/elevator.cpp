@@ -13,16 +13,8 @@ void elevator::levelSetter(){
     // the elevator will be moved with the D-pad, which uses POV
 
     // if up POV is pressed, go up
-    if(m_elevator.Get() == true ){
-        m_elevatorController.StopMotor();
-    }else{
-        m_elevatorController.Set(1.0);
-    }
+    
     
     // if down POV is pressed, go down
-  if(m_elevator.Get() == true ){
-        m_elevatorController.StopMotor();
-    }else{
-        m_elevatorController.Set(-1.0);
-    }
+  
 }
