@@ -9,7 +9,7 @@
 
 #define DEBUG true
 #if DEBUG
-  dbgln(x) std::cout << "DEBUG::   :" << x << std::endl;
+  #define dbgln(x) std::cout << "DEBUG::   :" << x << std::endl;
 #else
 #endif
 
