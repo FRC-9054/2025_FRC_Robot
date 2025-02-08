@@ -32,13 +32,17 @@ RobotContainer::RobotContainer() {
   // Set up default drive command
   // The left stick controls translation of the robot.
   // Turning is controlled by the X axis of the right stick.
+  // 
+  // On the controller X is left and right, Y is forwards and backwards
+  // The subsystem defines X movement to be forwards and backwards, Y movement to be left and right
+  // Hence the flipped axes below
   m_drive.SetDefaultCommand(frc2::RunCommand(
       [this] {
         m_drive.Drive(
             -units::meters_per_second_t{frc::ApplyDeadband(
-                m_driverController.GetRawAxis(OIControllMapping::driveX), OIConstants::kDriveDeadband)},
-            -units::meters_per_second_t{frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveY), OIConstants::kDriveDeadband)},
+            -units::meters_per_second_t{frc::ApplyDeadband(
+                m_driverController.GetRawAxis(OIControllMapping::driveX), OIConstants::kDriveDeadband)},
             -units::radians_per_second_t{frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveRotate), OIConstants::kDriveDeadband)},
             true);
