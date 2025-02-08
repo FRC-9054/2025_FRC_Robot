@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/TestCommand.h"
+#include <iostream>
 
 TestCommand::TestCommand() {
   // Use addRequirements() here to declare subsystem dependencies.
@@ -12,7 +13,7 @@ TestCommand::TestCommand() {
 void TestCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void TestCommand::Execute() {}
+void TestCommand::Execute() {std::cout << "test command is doin somethin" << std::endl;}
 
 // Called once the command ends or is interrupted.
 void TestCommand::End(bool interrupted) {}

@@ -26,6 +26,7 @@ IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem) {
 
 // Called when the command is initially scheduled.
 void IntakeAlgae::Initialize() {
+  m_algaeIntake->IntakeAlgee();
   dbgln("Initialize()")
 }
 

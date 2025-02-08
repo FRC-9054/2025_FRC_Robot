@@ -21,6 +21,9 @@
 #include "Constants.h"
 #include "subsystems/DriveSubsystem.h"
 
+#include "commands/IntakeAlgae.h"
+#include "commands/TestCommand.h"
+
 using namespace DriveConstants;
 
 RobotContainer::RobotContainer() {
@@ -56,7 +59,7 @@ void RobotContainer::ConfigureButtonBindings() {
       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
-        .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.IntakeAlgee(); }, {&m_intakeAlgae}));
+        .WhileTrue(new frc2::RunCommand([this] { IntakeAlgae(&m_intakeAlgae).ToPtr(); }, {&m_intakeAlgae}));
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
         .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
@@ -72,6 +75,9 @@ void RobotContainer::ConfigureButtonBindings() {
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorDown)
         .WhileTrue(new frc2::RunCommand([this] { m_elevate; }, {&m_elevate}));
+
+    frc2::JoystickButton(&m_operatorController, OIConstants::bButton)
+        .WhileTrue(new frc2::RunCommand([this] { TestCommand().ToPtr(); }, {}));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
