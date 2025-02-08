@@ -4,8 +4,9 @@
 
 #include "commands/IntakeAlgae.h"
 
-IntakeAlgae::IntakeAlgae() {
+IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem) {
   // Use addRequirements() here to declare subsystem dependencies.
+  AddRequirements(m_algaeIntake);
 }
 
 // Called when the command is initially scheduled.

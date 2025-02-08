@@ -7,6 +7,8 @@
 #include <frc2/command/Command.h>
 #include <frc2/command/CommandHelper.h>
 
+#include "subsystems/AlgeeIntake.h"
+
 /**
  * An example command.
  *
@@ -20,7 +22,7 @@ class IntakeAlgae
   /* You should consider using the more terse Command factories API instead
    * https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands
    */
-  IntakeAlgae();
+  IntakeAlgae(AlgeeIntake* subsystem);
 
   void Initialize() override;
 
@@ -29,4 +31,7 @@ class IntakeAlgae
   void End(bool interrupted) override;
 
   bool IsFinished() override;
+
+  private:
+    AlgeeIntake* m_algaeIntake;
 };
