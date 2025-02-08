@@ -4,21 +4,42 @@
 
 #include "commands/IntakeAlgae.h"
 
+#include <iostream>
+
+
+#define DEBUG true
+#if DEBUG
+  dbgln(x) std::cout << "DEBUG::   :" << x << std::endl;
+#else
+#endif
+
+
+
+
+
 IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem) {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(m_algaeIntake);
+  dbgln("IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem)")
 }
 
 // Called when the command is initially scheduled.
-void IntakeAlgae::Initialize() {}
+void IntakeAlgae::Initialize() {
+  dbgln("Initialize()")
+}
 
 // Called repeatedly when this Command is scheduled to run
-void IntakeAlgae::Execute() {}
+void IntakeAlgae::Execute() {
+  dbgln("Execute()")
+}
 
 // Called once the command ends or is interrupted.
-void IntakeAlgae::End(bool interrupted) {}
+void IntakeAlgae::End(bool interrupted) {
+  dbgln("End(bool interrupted)")
+}
 
 // Returns true when the command should end.
 bool IntakeAlgae::IsFinished() {
+  dbgln("IsFinished()")
   return false;
 }
