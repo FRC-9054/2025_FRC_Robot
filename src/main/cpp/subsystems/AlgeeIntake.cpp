@@ -34,7 +34,7 @@ void AlgeeIntake::IntakeAlgee() {
     // and setting the intake motor speed to pull in the algee
     // if it is NOT pressed
     // if (m_algeeDetectionLimmitSwich.Get() == false) {
-    //     m_algeeIntakeMotorController.Set(1.0);
+        m_algeeIntakeMotorController.Set(1.0);
    
     // }
     // else{
@@ -46,5 +46,6 @@ void AlgeeIntake::IntakeAlgee() {
 void AlgeeIntake::PlaceAlgee() {
     // This is much simpler. We probably just need to set the
     // motor speed to push the algee out.
-        // m_algeeIntakeMotorController.Set(-1.0);
+        m_algeeIntakeMotorController.Set(-1.0);
+    dbgln("PlaceAlgae()")
 }
