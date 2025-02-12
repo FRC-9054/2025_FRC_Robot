@@ -95,6 +95,7 @@ extern const frc::TrapezoidProfile<units::radians>::Constraints
 
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
+constexpr int kOperatorControllerPort = 1;
 constexpr double kDriveDeadband = 0.05;
 
 const int               leftXAxis =  0;
@@ -119,6 +120,13 @@ namespace OIControllMapping {
     const int driveY      = OIConstants::leftYAxis;
     const int driveRotate = OIConstants::rightXAxis;
     const int setBreaks   = OIConstants::rightBumper;
+
+    const int elevatorDown = OIConstants::POVdown;
+    const int elevatorUp   = OIConstants::POVup;
+    const int intakeAlgee  = OIConstants::xButton;
+    const int outtakeAlgee = OIConstants::aButton;
+    const int intakeCoral  = OIConstants::rightBumper;
+    const int outtakeCoral = OIConstants::yButton;
 }  // namespace OIControllMapping
 
 namespace AlgeeIntakeConstants {

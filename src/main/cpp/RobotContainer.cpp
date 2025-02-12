@@ -47,8 +47,10 @@ RobotContainer::RobotContainer() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-  frc2::JoystickButton(&m_driverController,
-                       OIControllMapping::setBreaks)
+  frc2::JoystickButton(&m_driverController,OIControllMapping::setBreaks)
+      .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
+
+      frc2::JoystickButton(&m_driverController,OIControllMapping::setBreaks)
       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
 }
 
