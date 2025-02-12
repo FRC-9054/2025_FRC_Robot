@@ -17,6 +17,7 @@
 #include <units/velocity.h>
 
 #include <utility>
+#include <iostream>
 
 #include "Constants.h"
 #include "subsystems/DriveSubsystem.h"
@@ -51,6 +52,8 @@ RobotContainer::RobotContainer() {
             true);
       },
       {&m_drive}));
+
+    //   m_intakeAlgae.Run(frc2::RunCommand([this] {std::cout << "Something.go()" << std::endl;},{&m_intakeAlgae}));
 }
 
 void RobotContainer::ConfigureButtonBindings() {
