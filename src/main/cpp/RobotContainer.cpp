@@ -61,11 +61,15 @@ void RobotContainer::ConfigureButtonBindings() {
                        OIControllMapping::setBreaks)
       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
 
-    frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
-        .WhileTrue(new frc2::RunCommand([this] { IntakeAlgae(&m_intakeAlgae).ToPtr(); }, {&m_intakeAlgae}));
+    // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
+    //     .WhileTrue(new frc2::RunCommand([this] { IntakeAlgae(&m_intakeAlgae).ToPtr(); }, {&m_intakeAlgae}));
 
-    frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
-        .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
+    // frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
+    //     .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
+
+    // frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
+    //     .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.IntakeAlgee::Execute().ToPtr(); }, {&m_intakeAlgae}));
+
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
         .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.IntakeCoral(); }, {&m_intakeCoral}));

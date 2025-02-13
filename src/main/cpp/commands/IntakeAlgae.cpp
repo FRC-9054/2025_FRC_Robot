@@ -18,10 +18,16 @@
 
 
 
-IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem) {
+// IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem) {
+//   // Use addRequirements() here to declare subsystem dependencies.
+//   AddRequirements(m_algaeIntake);
+//   dbgln("IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem)")
+// }
+
+IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(m_algaeIntake);
-  dbgln("IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem)")
+  // AddRequirements(m_algaeIntake);
+  dbgln("IntakeAlgae(AlgeeIntake* subsystem) {")
 }
 
 // Called when the command is initially scheduled.
