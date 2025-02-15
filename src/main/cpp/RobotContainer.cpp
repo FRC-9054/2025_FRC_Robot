@@ -24,6 +24,7 @@
 
 #include "commands/IntakeAlgae.h"
 #include "commands/TestCommand.h"
+#include "commands/ExampleCommand.h"
 
 using namespace DriveConstants;
 
@@ -62,7 +63,7 @@ void RobotContainer::ConfigureButtonBindings() {
 //       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
-        .WhileTrue(new frc2::RunCommand([this] { IntakeAlgae(&m_intakeAlgae).ToPtr(); }, {&m_intakeAlgae}));
+        .WhileTrue(IntakeAlgae(&m_intakeAlgae).ToPtr());
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
         .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
@@ -81,7 +82,20 @@ void RobotContainer::ConfigureButtonBindings() {
 
     // frc2::JoystickButton(&m_operatorController, OIConstants::bButton)
     //     .WhileTrue(new frc2::RunCommand([this] { TestCommand().ToPtr(); }, {}));
+
+      // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
+  //frc2::Trigger([this] {
+  //  return m_subsystem.ExampleCondition();
+  //}).OnTrue(ExampleCommand(&m_subsystem).ToPtr());
+
+    // Working button-subsystem binding
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral).WhileTrue(m_subsystem.ExampleMethodCommand());
+    // Working button-command binding
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
+    .WhileTrue(ExampleCommand(&m_subsystem).ToPtr());
 }
+
+
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
 //   // Set up config for trajectory

@@ -95,7 +95,7 @@ extern const frc::TrapezoidProfile<units::radians>::Constraints
 
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
-constexpr int kOperatorControllerPort = 0;
+constexpr int kOperatorControllerPort = 1;
 constexpr double kDriveDeadband = 0.05;
 
 const int               leftXAxis =  0;

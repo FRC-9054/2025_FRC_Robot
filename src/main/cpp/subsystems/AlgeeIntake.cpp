@@ -48,4 +48,5 @@ void AlgeeIntake::PlaceAlgee() {
     // motor speed to push the algee out.
         m_algeeIntakeMotorController.Set(-1.0);
     dbgln("PlaceAlgae()")
+    std::cout << "this is the debug you're looking for" << std::endl;
 }

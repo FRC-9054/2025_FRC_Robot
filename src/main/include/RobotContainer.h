@@ -20,6 +20,8 @@
 #include "subsystems/AlgeeIntake.h"
 #include "subsystems/CoralIntake.h"
 #include "subsystems/ElevatorSubsystem.h"
+#include "commands/IntakeAlgae.h"
+#include "subsystems/ExampleSubsystem.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -47,6 +49,11 @@ class RobotContainer {
   AlgeeIntake m_intakeAlgae;
   CoralIntake m_intakeCoral;
   ElevatorSubsystem m_elevate;
+  exampleSubsystem m_subsystem;
+
+
+  //the robots commands
+  // IntakeAlgae m_intake;
 
   // The chooser for the autonomous routines
   frc::SendableChooser<frc2::Command*> m_chooser;
