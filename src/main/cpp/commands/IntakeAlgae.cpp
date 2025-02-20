@@ -43,9 +43,9 @@ void IntakeAlgae::End(bool interrupted) {
   // std::cout << "command interrupted" << std:: endl;
 }
 
-// Returns true when the command should end.
+// // Returns true when the command should end.
 // bool IntakeAlgae::IsFinished() {
-//   dbgln("IsFinished()")
+//   dbgln(" ")
 //   // std::cout << "command isn't finished" << std:: endl;
 //   return false;
 // }

@@ -40,7 +40,7 @@ void AlgeeIntake::IntakeAlgee() {
     // else{
     //     m_algeeIntakeMotorController.StopMotor();
     // }
-    dbgln("Eat my shorts!")
+    // dbgln("Eat my shorts!")
 }
 
 void AlgeeIntake::PlaceAlgee() {
@@ -48,5 +48,5 @@ void AlgeeIntake::PlaceAlgee() {
     // motor speed to push the algee out.
         m_algeeIntakeMotorController.Set(-1.0);
     dbgln("PlaceAlgae()")
-    std::cout << "this is the debug you're looking for" << std::endl;
+    // std::cout << "this is the debug you're looking for" << std::endl;
 }

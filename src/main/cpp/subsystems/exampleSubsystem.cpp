@@ -6,6 +6,15 @@
 
 #include "subsystems/exampleSubsystem.h"
 
+#define DEBUG true
+#if DEBUG
+  #define dbgln(x) std::cout << "DEBUG::   :" << x << std::endl;
+#else
+  #define dbgln(x)
+#endif
+
+
+
 exampleSubsystem::exampleSubsystem() = default;
 
 // This method will be called once per scheduler run
@@ -16,7 +25,7 @@ void exampleSubsystem::Periodic() {
 frc2::CommandPtr exampleSubsystem::ExampleMethodCommand() {
   // Inline construction of command goes here.
   // Subsystem::RunOnce implicitly requires `this` subsystem.
-  return RunOnce([this] { std::cout << "example method command" << std::endl; });
+  return RunOnce([this] { std::cout << "example method command" <<std::endl; });
 }
 
 bool exampleSubsystem::ExampleCondition() {
