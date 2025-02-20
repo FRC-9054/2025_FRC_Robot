@@ -28,24 +28,24 @@ IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem) {
 void IntakeAlgae::Initialize() {
   m_algaeIntake->IntakeAlgee();
   dbgln("Initialize()")
-  std::cout << "command initialized" << std:: endl;
+  // std::cout << "command initialized" << std:: endl;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeAlgae::Execute() {
   dbgln("Execute()")
-  std::cout << "command executing" << std:: endl;
+  // std::cout << "command executing" << std:: endl;
 }
 
 // Called once the command ends or is interrupted.
 void IntakeAlgae::End(bool interrupted) {
   dbgln("End(bool interrupted)")
-  std::cout << "command interrupted" << std:: endl;
+  // std::cout << "command interrupted" << std:: endl;
 }
 
 // Returns true when the command should end.
-bool IntakeAlgae::IsFinished() {
-  dbgln("IsFinished()")
-  std::cout << "command isn't finished" << std:: endl;
-  return false;
-}
+// bool IntakeAlgae::IsFinished() {
+//   dbgln("IsFinished()")
+//   // std::cout << "command isn't finished" << std:: endl;
+//   return false;
+// }

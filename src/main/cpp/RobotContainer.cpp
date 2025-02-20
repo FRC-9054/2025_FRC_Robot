@@ -25,6 +25,7 @@
 #include "commands/IntakeAlgae.h"
 #include "commands/TestCommand.h"
 #include "commands/ExampleCommand.h"
+// #include "commands/ElevatorUpCommand.h"
 
 using namespace DriveConstants;
 
@@ -67,6 +68,7 @@ void RobotContainer::ConfigureButtonBindings() {
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
         .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
+        
 
     // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
     //     .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.IntakeCoral(); }, {&m_intakeCoral}));
@@ -91,8 +93,11 @@ void RobotContainer::ConfigureButtonBindings() {
     // Working button-subsystem binding
     frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral).WhileTrue(m_subsystem.ExampleMethodCommand());
     // Working button-command binding
-    frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
-    .WhileTrue(ExampleCommand(&m_subsystem).ToPtr());
+    // frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
+    // .WhileTrue(ExampleCommand(&m_subsystem).ToPtr());
+
+    // frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp).WhileTrue(m_elevator.ElevatorUp());
+    
 }
 
 
