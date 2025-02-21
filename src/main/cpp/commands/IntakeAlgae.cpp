@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/IntakeAlgae.h"
+#include "subsystems/AlgeeIntake.cpp"
 
 #include <iostream>
 
@@ -27,20 +28,20 @@ IntakeAlgae::IntakeAlgae(AlgeeIntake* subsystem) : m_algaeIntake(subsystem) {
 // Called when the command is initially scheduled.
 void IntakeAlgae::Initialize() {
   m_algaeIntake->IntakeAlgee();
+  m_algeeIntakeMotorController.Set(1.0);
   dbgln("Initialize()")
-  // std::cout << "command initialized" << std:: endl;
+  
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeAlgae::Execute() {
   dbgln("Execute()")
-  // std::cout << "command executing" << std:: endl;
+  AlgeeIntake::IntakeAlgee;
 }
 
 // Called once the command ends or is interrupted.
 void IntakeAlgae::End(bool interrupted) {
   dbgln("End(bool interrupted)")
-  // std::cout << "command interrupted" << std:: endl;
 }
 
 // // Returns true when the command should end.

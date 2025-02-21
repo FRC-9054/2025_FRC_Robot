@@ -25,7 +25,7 @@ void exampleSubsystem::Periodic() {
 frc2::CommandPtr exampleSubsystem::ExampleMethodCommand() {
   // Inline construction of command goes here.
   // Subsystem::RunOnce implicitly requires `this` subsystem.
-  return RunOnce([this] { std::cout << "example method command" <<std::endl; });
+  return RunOnce([this] { dbgln ("Execute()")});
 }
 
 bool exampleSubsystem::ExampleCondition() {

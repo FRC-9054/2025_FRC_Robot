@@ -30,8 +30,9 @@ class IntakeAlgae
 
   void End(bool interrupted) override;
 
-  bool IsFinished() override;
+  // bool IsFinished() override;
 
   private:
     AlgeeIntake* m_algaeIntake;
+    
 };

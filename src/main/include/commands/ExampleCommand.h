@@ -30,7 +30,7 @@ class ExampleCommand
 
   void End(bool interrupted) override;
 
-  bool IsFinished() override;
+//   bool IsFinished() override;
 
   private:
    exampleSubsystem* m_subsystem;

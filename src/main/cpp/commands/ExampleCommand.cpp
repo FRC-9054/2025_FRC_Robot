@@ -26,8 +26,8 @@ void ExampleCommand::End(bool interrupted) {
   std::cout << "command interrupted" << std:: endl;
 }
 
-// Returns true when the command should end.
-bool ExampleCommand::IsFinished() {
-  std::cout << "command isn't finished" << std:: endl;
-  return false;
-}
+// // Returns true when the command should end.
+// bool ExampleCommand::IsFinished() {
+//   std::cout << "command isn't finished" << std:: endl;
+//   return false;
+// }
