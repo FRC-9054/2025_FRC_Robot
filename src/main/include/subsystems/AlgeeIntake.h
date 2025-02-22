@@ -22,7 +22,13 @@ class AlgeeIntake : public frc2::SubsystemBase {
 
   // Subsystem methods go here.
   // vvvvvvvvvvvvvvvvvvvvvvvvv
-  void IntakeAlgee();
+  void IntakeAlgeeInit();
+
+  void IntakeAlgeePeriodic();
+
+  void IntakeAlgeeEnd();
+
+
 
   void PlaceAlgee();
   // ^^^^^^^^^^^^^^^^^^^^^^^^^

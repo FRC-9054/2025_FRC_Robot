@@ -29,12 +29,24 @@ void AlgeeIntake::Periodic() {
 }
 
 
-void AlgeeIntake::IntakeAlgee() {
+void AlgeeIntake::IntakeAlgeeInit() {
     // code for intaking algee goes here
     // Probably looks something like checking the limmit swich
     // and setting the intake motor speed to pull in the algee
-        m_algeeIntakeMotorController.Set(1.0);
+        // m_algeeIntakeMotorController.Set(1.0);
+  
     // dbgln("Eat my shorts!")
+}
+
+void AlgeeIntake::IntakeAlgeePeriodic() {
+  m_algeeIntakeMotorController.Set(1.0);
+  if (/*if limmit sw is pressed*/true) {
+    IntakeAlgeeEnd();
+  }
+}
+
+void AlgeeIntake::IntakeAlgeeEnd() {
+  m_algeeIntakeMotorController.StopMotor();
 }
 
 void AlgeeIntake::PlaceAlgee() {
