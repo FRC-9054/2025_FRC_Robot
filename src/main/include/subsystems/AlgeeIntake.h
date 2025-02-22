@@ -28,7 +28,7 @@ class AlgeeIntake : public frc2::SubsystemBase {
   // ^^^^^^^^^^^^^^^^^^^^^^^^^
   // Subsystem methods go here.
 
- private:
+//  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
   SparkMax m_algeeIntakeMotorController{AlgeeIntakeConstants::intakeMotor1CANID, rev::spark::SparkLowLevel::MotorType::kBrushless};
