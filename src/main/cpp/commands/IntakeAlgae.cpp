@@ -36,11 +36,13 @@ void IntakeAlgae::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void IntakeAlgae::Execute() {
   dbgln("Execute()")
+  m_algaeIntake->m_algeeIntakeMotorController.Set(1.0);
   // AlgeeIntake::IntakeAlgee;
 }
 
 // Called once the command ends or is interrupted.
 void IntakeAlgae::End(bool interrupted) {
+  m_algaeIntake->m_algeeIntakeMotorController.StopMotor();
   dbgln("End(bool interrupted)")
 }
 
