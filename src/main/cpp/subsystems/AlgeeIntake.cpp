@@ -3,7 +3,6 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "subsystems/AlgeeIntake.h"
-
 #include <iostream>
 
 
@@ -39,9 +38,13 @@ void AlgeeIntake::IntakeAlgeeInit() {
 }
 
 void AlgeeIntake::IntakeAlgeePeriodic() {
-  m_algeeIntakeMotorController.Set(1.0);
-  if (/*if limmit sw is pressed*/true) {
-    IntakeAlgeeEnd();
+  // m_algeeIntakeMotorController.Set(1.0);
+  if (m_algeeDetectionLimmitSwich1.Get() || m_algeeDetectionLimmitSwich2.Get()) {
+    dbgln("I have algae!");
+    AlgeeIntake::IntakeAlgeeEnd();
+  } else{
+    dbgln(" no algae :( ");
+    m_algeeIntakeMotorController.Set(1.0);
   }
 }
 

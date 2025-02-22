@@ -130,7 +130,9 @@ namespace OIControllMapping {
 
 namespace AlgeeIntakeConstants {
     const int intakeMotor1CANID = 20;
-    const int algeeDetectionLimmitSwichPort = 0;
+    const int algeeDetectionLimmitSwichPort1 = 0;
+    const int algeeDetectionLimmitSwichPort2 = 1;
+    const int intakeSetDetectionLimmitSwichPort = 2;
 }
 
 namespace CoralIntakeConstants {
