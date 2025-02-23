@@ -21,6 +21,7 @@
 #include "subsystems/CoralIntake.h"
 #include "subsystems/ElevatorSubsystem.h"
 #include "commands/IntakeAlgae.h"
+#include "commands/OuttakeAlgae.h"
 #include "subsystems/ExampleSubsystem.h"
 
 /**
@@ -58,5 +59,7 @@ class RobotContainer {
   // The chooser for the autonomous routines
   frc::SendableChooser<frc2::Command*> m_chooser;
 
+  bool ConvertAxisToButton(int axisNum);
   void ConfigureButtonBindings();
+  
 };

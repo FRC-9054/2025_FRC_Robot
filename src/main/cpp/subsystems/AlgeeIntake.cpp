@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "subsystems/AlgeeIntake.h"
+#include <Constants.h>
 #include <iostream>
 
 
@@ -44,7 +45,7 @@ void AlgeeIntake::IntakeAlgeePeriodic() {
     AlgeeIntake::IntakeAlgeeEnd();
   } else{
     dbgln(" no algae :( ");
-    m_algeeIntakeMotorController.Set(1.0);
+    m_algeeIntakeMotorController.Set(AlgeeIntakeConstants::IntakeSpeed);
   }
 }
 
@@ -52,9 +53,62 @@ void AlgeeIntake::IntakeAlgeeEnd() {
   m_algeeIntakeMotorController.StopMotor();
 }
 
-void AlgeeIntake::PlaceAlgee() {
+/*
+ 
+ B O R D E R 
+
+ F O R 
+
+ O R G A N I Z A T I O N
+
+*/
+
+void AlgeeIntake::PlaceAlgeeInit() {
     // This is much simpler. We probably just need to set the
     // motor speed to push the algee out.
-        m_algeeIntakeMotorController.Set(-1.0);
-    // std::cout << "this is the debug you're looking for" << std::endl;
+   
+}
+
+void AlgeeIntake::PlaceAlgeePeriodic() {
+    // This is much simpler. We probably just need to set the
+    // motor speed to push the algee out.
+
+    m_algeeIntakeMotorController.Set(AlgeeIntakeConstants::OuttakeSpeed);
+
+}
+
+void AlgeeIntake::PlaceAlgeeEnd() {
+    // This is much simpler. We probably just need to set the
+    // motor speed to push the algee out.
+m_algeeIntakeMotorController.StopMotor();
+}
+
+/*
+ 
+ B O R D E R 
+
+ F O R 
+
+ O R G A N I Z A T I O N
+
+*/
+
+void AlgeeIntake::WinchRetractInit(){}
+
+void AlgeeIntake::WinchRetractPeriodic(){
+  m_winchMotorController.Set(AlgeeIntakeConstants::WinchSpeedPull);
+}
+
+void AlgeeIntake::WinchRetractEnd(){
+m_winchMotorController.StopMotor();
+}
+
+void AlgeeIntake::WinchExtendInit(){}
+
+void AlgeeIntake::WinchExtendPeriodic(){
+  m_winchMotorController.Set(AlgeeIntakeConstants::WinchSpeedPush);
+}
+
+void AlgeeIntake::WinchExtendEnd(){
+m_winchMotorController.StopMotor();
 }

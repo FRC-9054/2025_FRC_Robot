@@ -25,6 +25,9 @@
 #include "commands/IntakeAlgae.h"
 #include "commands/TestCommand.h"
 #include "commands/ExampleCommand.h"
+#include "commands/WinchExtendCommand.h"
+#include "commands/WinchRetractCommand.h"
+
 // #include "commands/ElevatorUpCommand.h"
 
 using namespace DriveConstants;
@@ -57,6 +60,12 @@ RobotContainer::RobotContainer() {
 
 //     //   m_intakeAlgae.Run(frc2::RunCommand([this] {std::cout << "Something.go()" << std::endl;},{&m_intakeAlgae}));
 }
+ bool RobotContainer::ConvertAxisToButton(int axisNum){
+   if( m_operatorController.GetRawAxis(axisNum) > 0.5){
+        return true;
+   }
+   return false;
+}
 
 void RobotContainer::ConfigureButtonBindings() {
 //   frc2::JoystickButton(&m_driverController,
@@ -67,7 +76,27 @@ void RobotContainer::ConfigureButtonBindings() {
         .WhileTrue(IntakeAlgae(&m_intakeAlgae).ToPtr());
 
     frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
-        .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
+        .WhileTrue(OuttakeAlgae(&m_intakeAlgae).ToPtr());
+
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::winchUp)
+        .WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
+
+         //frc2::JoystickButton(&m_operatorController, ConvertAxisToButton(OIControllMapping::winchDown))
+        //.WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
+        //.WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
+
+    //frc2::Trigger(ConvertAxisToButton(OIControllMapping::winchDown),(WinchRetractCommand(&m_intakeAlgae).ToPtr()));
+
+    //[Trevor] This is the worst thing I have ever written
+    frc2::Trigger{ [this]() {
+            if( m_operatorController.GetRawAxis(OIControllMapping::winchDown) > 0.5){
+                return true;
+            }
+            return false;
+        }
+    }.WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
+
+    //ConvertAxisToButton(OIControllMapping::winchDown).WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
         
 
     // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
