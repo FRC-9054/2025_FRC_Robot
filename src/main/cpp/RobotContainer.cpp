@@ -112,15 +112,14 @@ void RobotContainer::ConfigureButtonBindings() {
     frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
     .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
 
-    //frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
-    //;
-
-
-
-
-
-
-
+    frc2::Trigger(
+      [this]() {
+        if( m_operatorController.GetRawAxis(OIControllMapping::outtakeCoral) > 0.5) {
+          return true;
+        }
+        return false;
+      }
+    ).WhileTrue(OuttakeCoral(&m_intakeCoral).ToPtr());
   /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
   /*     WRITE YOUR CORAL COMMANDS HERE     */
   //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////  DAMIEN  /////////////////////////////////////////////////////////////////////////////////////

@@ -124,7 +124,7 @@ namespace OIControllMapping {
     const int intakeAlgae = OIConstants::xButton;
     const int outtakeAlgae= OIConstants::aButton;
     const int intakeCoral = OIConstants::leftBumper;
-    const int outtakeCoral= OIConstants::yButton;
+    const int outtakeCoral= OIConstants::leftTrigger;
     const int elevatorUp  = OIConstants::POVup;
     const int elevatorDown= OIConstants::POVdown;
     const int winchUp     = OIConstants::rightBumper;
@@ -140,16 +140,16 @@ namespace AlgeeIntakeConstants {
     const int algeeDetectionLimmitSwich1Port = 9;
     const int algeeDetectionLimmitSwich2Port = 1;
     const int intakeSetDetectionLimmitSwichPort = 2;
-    const float IntakeSpeed = 1.0;
-    const float OuttakeSpeed = -1.0;
-    const float WinchSpeedPull = 0.5;
-    const float WinchSpeedPush = -0.5;
+    const float IntakeSpeed = 1.0f;
+    const float OuttakeSpeed = -1.0f;
+    const float WinchSpeedPull = 0.5f;
+    const float WinchSpeedPush = -0.5f;
 }
 
 namespace CoralIntakeConstants {
     const int intakeMotorCoralCANID = 20;
     const int intakeLimitSwitchPort = 0;
-    const int IntakeSpeed = 1.0;
+    const float IntakeSpeed = 0.2f;
     const int coralDetector = 99;
 }
 

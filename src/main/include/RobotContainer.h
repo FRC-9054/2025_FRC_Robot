@@ -23,6 +23,7 @@
 #include "commands/IntakeAlgae.h"
 #include "commands/OuttakeAlgae.h"
 #include "commands/IntakeCoral.h"
+#include "commands/OuttakeCoral.h"
 #include "subsystems/ExampleSubsystem.h"
 
 /**
