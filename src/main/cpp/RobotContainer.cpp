@@ -106,17 +106,24 @@ void RobotContainer::ConfigureButtonBindings() {
 
   // ConvertAxisToButton(OIControllMapping::winchDown).WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
 
-  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  ////////
-  //  DAMIEN
-  //  /////////////////////////////////////////////////////////////////////////////////////
+  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////  DAMIEN  /////////////////////////////////////////////////////////////////////////////////////
   /*     WRITE YOUR CORAL COMMANDS HERE     */
   /*vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*/
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
+    .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
+
+    //frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
+    //;
+
+
+
+
+
+
 
   /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
   /*     WRITE YOUR CORAL COMMANDS HERE     */
-  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  ////////
-  //  DAMIEN
-  //  /////////////////////////////////////////////////////////////////////////////////////
+  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////  DAMIEN  /////////////////////////////////////////////////////////////////////////////////////
 
   // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
   //     .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.IntakeCoral();

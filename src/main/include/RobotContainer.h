@@ -22,6 +22,7 @@
 #include "subsystems/ElevatorSubsystem.h"
 #include "commands/IntakeAlgae.h"
 #include "commands/OuttakeAlgae.h"
+#include "commands/IntakeCoral.h"
 #include "subsystems/ExampleSubsystem.h"
 
 /**
