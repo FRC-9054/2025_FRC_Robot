@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <frc/GenericHID.h>
 #include <frc/XboxController.h>
 #include <frc/controller/PIDController.h>
 #include <frc/controller/ProfiledPIDController.h>
@@ -13,17 +14,16 @@
 #include <frc2/command/PIDCommand.h>
 #include <frc2/command/ParallelRaceGroup.h>
 #include <frc2/command/RunCommand.h>
-#include <frc/GenericHID.h>
 
 #include "Constants.h"
-#include "subsystems/DriveSubsystem.h"
+#include "commands/IntakeAlgae.h"
+#include "commands/IntakeCoral.h"
+#include "commands/OuttakeAlgae.h"
+#include "commands/OuttakeCoral.h"
 #include "subsystems/AlgeeIntake.h"
 #include "subsystems/CoralIntake.h"
-#include "subsystems/ElevatorSubsystem.h"
-#include "commands/IntakeAlgae.h"
-#include "commands/OuttakeAlgae.h"
-#include "commands/IntakeCoral.h"
-#include "commands/OuttakeCoral.h"
+#include "subsystems/DriveSubsystem.h"
+#include "subsystems/Elevator.h"
 #include "subsystems/ExampleSubsystem.h"
 
 /**
@@ -51,17 +51,15 @@ class RobotContainer {
   // DriveSubsystem m_drive;
   AlgeeIntake m_intakeAlgae;
   CoralIntake m_intakeCoral;
-  ElevatorSubsystem m_elevate;
+  Elevator m_elevator;
   exampleSubsystem m_subsystem;
 
-
-  //the robots commands
-  // IntakeAlgae m_intake;
+  // the robots commands
+  //  IntakeAlgae m_intake;
 
   // The chooser for the autonomous routines
   frc::SendableChooser<frc2::Command*> m_chooser;
 
   bool ConvertAxisToButton(int axisNum);
   void ConfigureButtonBindings();
-  
 };

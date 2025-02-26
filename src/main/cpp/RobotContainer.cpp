@@ -20,6 +20,7 @@
 #include <utility>
 
 #include "Constants.h"
+#include "commands/ElevatorUp.h"
 #include "commands/ExampleCommand.h"
 #include "commands/IntakeAlgae.h"
 #include "commands/TestCommand.h"
@@ -106,23 +107,31 @@ void RobotContainer::ConfigureButtonBindings() {
 
   // ConvertAxisToButton(OIControllMapping::winchDown).WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
 
-  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////  DAMIEN  /////////////////////////////////////////////////////////////////////////////////////
+  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////
+  //  DAMIEN
+  //  /////////////////////////////////////////////////////////////////////////////////////
   /*     WRITE YOUR CORAL COMMANDS HERE     */
   /*vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*/
-    frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
-    .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
+  // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
+  // .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
 
-    frc2::Trigger(
-      [this]() {
-        if( m_operatorController.GetRawAxis(OIControllMapping::outtakeCoral) > 0.5) {
-          return true;
-        }
-        return false;
-      }
-    ).WhileTrue(OuttakeCoral(&m_intakeCoral).ToPtr());
+  // frc2::Trigger(
+  //   [this]() {
+  //     if( m_operatorController.GetRawAxis(OIControllMapping::outtakeCoral) >
+  //     0.5) {
+  //       return true;
+  //     }
+  //     return false;
+  //   }
+  // ).WhileTrue(OuttakeCoral(&m_intakeCoral).ToPtr());
   /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
   /*     WRITE YOUR CORAL COMMANDS HERE     */
-  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////  DAMIEN  /////////////////////////////////////////////////////////////////////////////////////
+  //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////
+  //  DAMIEN
+  //  /////////////////////////////////////////////////////////////////////////////////////
+
+  frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
+      .WhileTrue(ElevatorUp(&m_elevator).ToPtr());
 
   // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
   //     .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.IntakeCoral();

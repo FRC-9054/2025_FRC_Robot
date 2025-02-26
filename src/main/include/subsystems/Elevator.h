@@ -4,28 +4,37 @@
 
 #pragma once
 
-#include <frc2/command/SubsystemBase.h>
 #include <Constants.h>
 #include <frc/DigitalInput.h>
+#include <frc2/command/SubsystemBase.h>
 #include <rev/SparkMax.h>
+#include <rev/SparkRelativeEncoder.h>
 
 using namespace rev::spark;
 
-class ElevatorSubsystem : public frc2::SubsystemBase {
+class Elevator : public frc2::SubsystemBase {
  public:
-  ElevatorSubsystem();
+  Elevator();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
-  void levelSetter();
-    
+  // void levelSetter();
+
+  void ElevatorUpInit();
+
+  void ElevatorUpPeriodic();
+
+  void ElevatorUpEnd();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  SparkMax m_elevatorController{ElevatorConstants::MotorElevatorCANID, rev::spark::SparkLowLevel::MotorType::kBrushless};
- frc::DigitalInput m_elevator{ElevatorConstants::ElevatorID};
+  SparkMax m_elevatorController{
+      ElevatorConstants::MotorElevatorCANID,
+      rev::spark::SparkLowLevel::MotorType::kBrushless};
+  SparkRelativeEncoder m_elevatorEncoder = m_elevatorController.GetEncoder();
+  frc::DigitalInput m_elevator{ElevatorConstants::ElevatorID};
 };

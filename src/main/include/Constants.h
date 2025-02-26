@@ -125,7 +125,7 @@ const int intakeAlgae = OIConstants::xButton;
 const int outtakeAlgae = OIConstants::aButton;
 const int intakeCoral = OIConstants::leftBumper;
 const int outtakeCoral = OIConstants::leftTrigger;
-const int elevatorUp = OIConstants::POVup;
+const int elevatorUp = OIConstants::yButton;
 const int elevatorDown = OIConstants::POVdown;
 const int winchUp = OIConstants::rightBumper;
 const int winchDown = OIConstants::rightTrigger;
@@ -134,7 +134,7 @@ const int winchDown = OIConstants::rightTrigger;
 
 namespace AlgeeIntakeConstants {
 const int intakeMotor1CANID = 99;
-const int winchMotorCANID = 21;
+const int winchMotorCANID = 98;
 const int algeeDetectionLimmitSwich1Port = 9;
 const int algeeDetectionLimmitSwich2Port = 1;
 const int intakeSetDetectionLimmitSwichPort = 2;
@@ -153,6 +153,6 @@ const int coralDetector = 99;
 }  // namespace CoralIntakeConstants
 
 namespace ElevatorConstants {
-const int MotorElevatorCANID = 23;
+const int MotorElevatorCANID = 21;
 const int ElevatorID = 3;
 }  // namespace ElevatorConstants
