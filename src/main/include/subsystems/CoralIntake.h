@@ -5,6 +5,7 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
+#include <frc/DigitalInput.h>
 #include <rev/SparkMax.h>
 #include <Constants.h>
 
@@ -24,9 +25,19 @@ class CoralIntake : public frc2::SubsystemBase {
 
 // Subsystem methods go here.
   // vvvvvvvvvvvvvvvvvvvvvvvvv
-  void IntakeCoral();
+  void IntakeCoralInit();
 
-  void PlaceCoral();
+  void IntakeCoralPeriodic();
+
+  void IntakeCoralEnd();
+
+
+
+  void PlaceCoralInit();
+
+  void PlaceCoralPeriodic();
+
+  void PlaceCoralEnd();
   // ^^^^^^^^^^^^^^^^^^^^^^^^^
   // Subsystem methods go here.
 
@@ -34,5 +45,6 @@ class CoralIntake : public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
  SparkMax m_coralIntakeMotorController{CoralIntakeConstants::intakeMotorCoralCANID, rev::spark::SparkLowLevel::MotorType::kBrushless};
+ frc::DigitalInput m_coralDetectionLimitSwitch{CoralIntakeConstants::intakeLimitSwitchPort};
  grpl::LaserCan coralDetector{CoralIntakeConstants::intakeMotorCoralCANID};
 };
