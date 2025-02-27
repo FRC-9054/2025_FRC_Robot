@@ -27,6 +27,7 @@
 #include "commands/WinchExtendCommand.h"
 #include "commands/WinchRetractCommand.h"
 #include "subsystems/DriveSubsystem.h"
+#include "commands/home.h"
 
 // #include "commands/ElevatorUpCommand.h"
 
@@ -131,7 +132,7 @@ void RobotContainer::ConfigureButtonBindings() {
   //  /////////////////////////////////////////////////////////////////////////////////////
 
   frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
-      .WhileTrue(ElevatorUp(&m_elevator).ToPtr());
+      .WhileTrue(home(&m_elevator).ToPtr());
 
   // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
   //     .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.IntakeCoral();

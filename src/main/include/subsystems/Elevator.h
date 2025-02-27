@@ -28,6 +28,16 @@ class Elevator : public frc2::SubsystemBase {
   void ElevatorUpPeriodic();
 
   void ElevatorUpEnd();
+  
+  double getElevatorPosition();
+
+  bool getLimitSwitch();
+
+  void homeInit();
+
+  void homePeriodic();
+
+  bool homeEnd();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
@@ -36,5 +46,10 @@ class Elevator : public frc2::SubsystemBase {
       ElevatorConstants::MotorElevatorCANID,
       rev::spark::SparkLowLevel::MotorType::kBrushless};
   SparkRelativeEncoder m_elevatorEncoder = m_elevatorController.GetEncoder();
-  frc::DigitalInput m_elevator{ElevatorConstants::ElevatorID};
+  frc::DigitalInput m_elevatorLimitSwitch{ElevatorConstants::ElevatorLimitSwID};
+  bool isHomed = false;
+  bool firstStep = true;
+  bool backingOff = false;
+  double  currentElevatorPosition;
+  bool newValueThatWillWorkThisTimeForSure = false;
 };

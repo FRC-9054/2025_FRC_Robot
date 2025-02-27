@@ -26,5 +26,7 @@ class Robot : public frc::TimedRobot {
   // doesn't have undefined behavior and potentially crash.
   frc2::Command* m_autonomousCommand = nullptr;
 
+    frc::GenericHID m_operatorController{OIConstants::kOperatorControllerPort};
+
   RobotContainer m_container;
 };
