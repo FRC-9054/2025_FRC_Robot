@@ -45,23 +45,23 @@ RobotContainer::RobotContainer() {
   // On the controller X is left and right, Y is forwards and backwards
   // The subsystem defines X movement to be forwards and backwards, Y movement
   // to be left and right Hence the flipped axes below
-  //   m_drive.SetDefaultCommand(frc2::RunCommand(
-  //       [this] {
-  //         m_drive.Drive(
-  //             -units::meters_per_second_t{frc::ApplyDeadband(
-  //                 m_driverController.GetRawAxis(OIControllMapping::driveY),
-  //                 OIConstants::kDriveDeadband)},
-  //             -units::meters_per_second_t{frc::ApplyDeadband(
-  //                 m_driverController.GetRawAxis(OIControllMapping::driveX),
-  //                 OIConstants::kDriveDeadband)},
-  //             -units::radians_per_second_t{frc::ApplyDeadband(
-  //                 m_driverController.GetRawAxis(OIControllMapping::driveRotate),
-  //                 OIConstants::kDriveDeadband)},
-  //             true);
-  //       },
-  //       {&m_drive}));
+  m_drive.SetDefaultCommand(frc2::RunCommand(
+      [this] {
+        m_drive.Drive(
+            -units::meters_per_second_t{frc::ApplyDeadband(
+                m_driverController.GetRawAxis(OIControllMapping::driveY),
+                OIConstants::kDriveDeadband)},
+            -units::meters_per_second_t{frc::ApplyDeadband(
+                m_driverController.GetRawAxis(OIControllMapping::driveX),
+                OIConstants::kDriveDeadband)},
+            -units::radians_per_second_t{frc::ApplyDeadband(
+                m_driverController.GetRawAxis(OIControllMapping::driveRotate),
+                OIConstants::kDriveDeadband)},
+            true);
+      },
+      {&m_drive}));
 
-  //     //   m_intakeAlgae.Run(frc2::RunCommand([this] {std::cout <<
+  // m_intakeAlgae.Run(frc2::RunCommand([this] {std::cout <<
   //     "Something.go()" << std::endl;},{&m_intakeAlgae}));
 }
 bool RobotContainer::ConvertAxisToButton(int axisNum) {
@@ -72,58 +72,41 @@ bool RobotContainer::ConvertAxisToButton(int axisNum) {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-  //   frc2::JoystickButton(&m_driverController,
-  //                        OIControllMapping::setBreaks)
-  //       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); },
-  //       {&m_drive}));
+  frc2::JoystickButton(&m_driverController, OIControllMapping::setBreaks)
+      .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
 
-  // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
-  //     .WhileTrue(IntakeAlgae(&m_intakeAlgae).ToPtr());
+  frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
+      .WhileTrue(IntakeAlgae(&m_intakeAlgae).ToPtr());
 
-  // frc2::JoystickButton(&m_operatorController,
-  // OIControllMapping::outtakeAlgae)
-  //     .WhileTrue(OuttakeAlgae(&m_intakeAlgae).ToPtr());
+  frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
+      .WhileTrue(OuttakeAlgae(&m_intakeAlgae).ToPtr());
 
-  // frc2::JoystickButton(&m_operatorController, OIControllMapping::winchUp)
-  //     .WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
-
-  // frc2::JoystickButton(&m_operatorController,
-  // ConvertAxisToButton(OIControllMapping::winchDown))
-  //.WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
-  //.WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); },
-  //{&m_intakeAlgae}));
-
-  // frc2::Trigger(ConvertAxisToButton(OIControllMapping::winchDown),(WinchRetractCommand(&m_intakeAlgae).ToPtr()));
+  frc2::JoystickButton(&m_operatorController, OIControllMapping::winchUp)
+      .WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
 
   //[Trevor] This is the worst thing I have ever written
-  // frc2::Trigger{ [this]() {
-  //         if( m_operatorController.GetRawAxis(OIControllMapping::winchDown) >
-  //         0.5){
-  //             return true;
-  //         }
-  //         return false;
-  //     }
-  // }.WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
-
-  // ConvertAxisToButton(OIControllMapping::winchDown).WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
+  frc2::Trigger{[this]() {
+    if (m_operatorController.GetRawAxis(OIControllMapping::winchDown) > 0.5) {
+      return true;
+    }
+    return false;
+  }}.WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
 
   //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////
   //  DAMIEN
   //  /////////////////////////////////////////////////////////////////////////////////////
   /*     WRITE YOUR CORAL COMMANDS HERE     */
   /*vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*/
-  // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
-  // .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
+  frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
+      .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
 
-  // frc2::Trigger(
-  //   [this]() {
-  //     if( m_operatorController.GetRawAxis(OIControllMapping::outtakeCoral) >
-  //     0.5) {
-  //       return true;
-  //     }
-  //     return false;
-  //   }
-  // ).WhileTrue(OuttakeCoral(&m_intakeCoral).ToPtr());
+  frc2::Trigger([this]() {
+    if (m_operatorController.GetRawAxis(OIControllMapping::outtakeCoral) >
+        0.5) {
+      return true;
+    }
+    return false;
+  }).WhileTrue(OuttakeCoral(&m_intakeCoral).ToPtr());
   /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
   /*     WRITE YOUR CORAL COMMANDS HERE     */
   //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////
@@ -133,41 +116,10 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
       .WhileTrue(ElevatorUp(&m_elevator).ToPtr());
 
-  // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
-  //     .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.IntakeCoral();
-  //     }, {&m_intakeCoral}));
-
-  // frc2::JoystickButton(&m_operatorController,
-  // OIControllMapping::outtakeCoral)
-  //     .WhileTrue(new frc2::RunCommand([this] { m_intakeCoral.PlaceCoral(); },
-  //     {&m_intakeCoral}));
-
-  // frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
-  //     .WhileTrue(new frc2::RunCommand([this] { m_elevate; }, {&m_elevate}));
-
-  // frc2::JoystickButton(&m_operatorController,
-  // OIControllMapping::elevatorDown)
-  //     .WhileTrue(new frc2::RunCommand([this] { m_elevate; }, {&m_elevate}));
-
-  // frc2::JoystickButton(&m_operatorController, OIConstants::bButton)
-  //     .WhileTrue(new frc2::RunCommand([this] { TestCommand().ToPtr(); },
-  //     {}));
-
   // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   // frc2::Trigger([this] {
   //   return m_subsystem.ExampleCondition();
   // }).OnTrue(ExampleCommand(&m_subsystem).ToPtr());
-
-  // Working button-subsystem binding
-  // frc2::JoystickButton(&m_operatorController,
-  // OIControllMapping::intakeCoral).WhileTrue(m_subsystem.ExampleMethodCommand());
-  // Working button-command binding
-  // frc2::JoystickButton(&m_operatorController,
-  // OIControllMapping::outtakeCoral)
-  // .WhileTrue(ExampleCommand(&m_subsystem).ToPtr());
-
-  // frc2::JoystickButton(&m_operatorController,
-  // OIControllMapping::elevatorUp).WhileTrue(m_elevator.ElevatorUp());
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
