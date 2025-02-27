@@ -22,15 +22,42 @@ class AlgeeIntake : public frc2::SubsystemBase {
 
   // Subsystem methods go here.
   // vvvvvvvvvvvvvvvvvvvvvvvvv
-  void IntakeAlgee();
+  void IntakeAlgeeInit();
 
-  void PlaceAlgee();
+  void IntakeAlgeePeriodic();
+
+  void IntakeAlgeeEnd();
+
+
+
+  void PlaceAlgeeInit();
+
+  void PlaceAlgeePeriodic();
+
+  void PlaceAlgeeEnd();
+
+
+
+  void WinchRetractInit();
+
+  void WinchRetractPeriodic();
+
+  void WinchRetractEnd();
+
+   void WinchExtendInit();
+
+  void WinchExtendPeriodic();
+
+  void WinchExtendEnd();
   // ^^^^^^^^^^^^^^^^^^^^^^^^^
   // Subsystem methods go here.
 
- private:
+//  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
   SparkMax m_algeeIntakeMotorController{AlgeeIntakeConstants::intakeMotor1CANID, rev::spark::SparkLowLevel::MotorType::kBrushless};
-  frc::DigitalInput m_algeeDetectionLimmitSwich{AlgeeIntakeConstants::algeeDetectionLimmitSwichPort};
+  SparkMax m_winchMotorController{AlgeeIntakeConstants::winchMotorCANID, rev::spark::SparkLowLevel::MotorType::kBrushless};
+  frc::DigitalInput m_algeeDetectionLimmitSwich1{AlgeeIntakeConstants::algeeDetectionLimmitSwich1Port};
+  frc::DigitalInput m_algeeDetectionLimmitSwich2{AlgeeIntakeConstants::algeeDetectionLimmitSwich2Port};
+  frc::DigitalInput m_intakeInPlaceDetectionSwitch{AlgeeIntakeConstants::intakeSetDetectionLimmitSwichPort};
 };
