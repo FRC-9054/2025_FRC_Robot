@@ -95,6 +95,7 @@ extern const frc::TrapezoidProfile<units::radians>::Constraints
 
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
+constexpr int kOperatorControllerPort = 1;
 constexpr double kDriveDeadband = 0.05;
 
 const int               leftXAxis =  0;
@@ -107,34 +108,52 @@ const int                 aButton =  1;
 const int                 bButton =  2;
 const int                 xButton =  3;
 const int                 yButton =  4;
-const int                lTrigger =  2;
-const int                rTrigger =  3;
+const int                leftTrigger =  2;
+const int                rightTrigger =  3;
 const int                   POVup =  0;
 const int                 POVdown =  180;
-
 }  // namespace OIConstants
 
 namespace OIControllMapping {
+    // Driver
     const int driveX      = OIConstants::leftXAxis;
     const int driveY      = OIConstants::leftYAxis;
     const int driveRotate = OIConstants::rightXAxis;
     const int setBreaks   = OIConstants::rightBumper;
+   // Operator 
+    const int intakeAlgae = OIConstants::xButton;
+    const int outtakeAlgae= OIConstants::aButton;
+    const int intakeCoral = OIConstants::leftBumper;
+    const int outtakeCoral= OIConstants::yButton;
+    const int elevatorUp  = OIConstants::POVup;
+    const int elevatorDown= OIConstants::POVdown;
+    const int winchUp     = OIConstants::rightBumper;
+    const int winchDown     = OIConstants::rightTrigger;
+
+
+
 }  // namespace OIControllMapping
 
 namespace AlgeeIntakeConstants {
     const int intakeMotor1CANID = 20;
-    const int algeeDetectionLimmitSwichPort = 0;
+    const int winchMotorCANID = 21;
+    const int algeeDetectionLimmitSwich1Port = 0;
+    const int algeeDetectionLimmitSwich2Port = 1;
+    const int intakeSetDetectionLimmitSwichPort = 2;
+    const float IntakeSpeed = 1.0;
+    const float OuttakeSpeed = -1.0;
+    const float WinchSpeedPull = 0.5;
+    const float WinchSpeedPush = -0.5;
 }
 
 namespace CoralIntakeConstants {
-    const int intakeMotorCoralCANID = 21;
+    const int intakeMotorCoralCANID = 22;
     const int coralDetector = 99;
 }
 
 namespace ElevatorConstants {
-    const int MotorElevatorCANID = 22;
-    const int ElevatorID = 1;
+    const int MotorElevatorCANID = 23;
+    const int ElevatorID = 3;
 }
-
 
 

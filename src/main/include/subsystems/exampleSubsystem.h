@@ -5,27 +5,23 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include <Constants.h>
-#include <frc/DigitalInput.h>
-#include <rev/SparkMax.h>
+#include <frc2/command/CommandPtr.h>
 
-using namespace rev::spark;
-
-class elevator : public frc2::SubsystemBase {
+class exampleSubsystem : public frc2::SubsystemBase {
  public:
-  elevator();
+  exampleSubsystem();
 
+  frc2::CommandPtr ExampleMethodCommand();
+
+   bool ExampleCondition();
+
+   
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
-  void levelSetter();
-    
-
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  SparkMax m_elevatorController{ElevatorConstants::MotorElevatorCANID, rev::spark::SparkLowLevel::MotorType::kBrushless};
- frc::DigitalInput m_elevator{ElevatorConstants::ElevatorID};
 };
