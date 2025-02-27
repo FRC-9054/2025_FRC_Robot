@@ -135,9 +135,9 @@ const int winchDown = OIConstants::rightTrigger;
 namespace AlgeeIntakeConstants {
 const int intakeMotor1CANID = 99;
 const int winchMotorCANID = 98;
-const int algeeDetectionLimmitSwich1Port = 9;
-const int algeeDetectionLimmitSwich2Port = 1;
-const int intakeSetDetectionLimmitSwichPort = 2;
+const int algeeDetectionLimmitSwich1Port = 1;
+const int algeeDetectionLimmitSwich2Port = 2;
+const int intakeSetDetectionLimmitSwichPort = 3;
 const float IntakeSpeed = 1.0f;
 const float OuttakeSpeed = -1.0f;
 const float WinchSpeedPull = 0.5f;
@@ -146,7 +146,7 @@ const float WinchSpeedPush = -0.5f;
 
 namespace CoralIntakeConstants {
 const int intakeMotorCoralCANID = 20;
-const int intakeLimitSwitchPort = 0;
+const int intakeLimitSwitchPort = 4;
 const float IntakeSpeed = 0.2f;
 const float OuttakeSpeed = 0.2f;
 const int coralDetector = 99;
@@ -154,5 +154,19 @@ const int coralDetector = 99;
 
 namespace ElevatorConstants {
 const int MotorElevatorCANID = 21;
-const int ElevatorID = 3;
+const int ElevatorLimitSwID = 0;
+const float HomeDownSlowSpeed = -0.1;
+const float HomeDownFastSpeed = -0.5;
+const float HomeUpSpeed = 0.1;
+const double HomePositionBackOffValue = 7.3;
 }  // namespace ElevatorConstants
+
+
+/*
+ * Limit switch ports
+ * 0 - Elevator
+ * 1 - One of two algae detectors
+ * 2 - One of two algae detectors
+ * 3 - Algae intake home switch
+ * 4 - Coral intake
+*/
