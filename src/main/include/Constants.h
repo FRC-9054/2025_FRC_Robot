@@ -98,62 +98,75 @@ constexpr int kDriverControllerPort = 0;
 constexpr int kOperatorControllerPort = 1;
 constexpr double kDriveDeadband = 0.05;
 
-const int               leftXAxis =  0;
-const int               leftYAxis =  1;
-const int              rightXAxis =  4;
-const int              rightYAxis =  5;
-const int              leftBumper =  5;
-const int             rightBumper =  6;
-const int                 aButton =  1; 
-const int                 bButton =  2;
-const int                 xButton =  3;
-const int                 yButton =  4;
-const int                leftTrigger =  2;
-const int                rightTrigger =  3;
-const int                   POVup =  0;
-const int                 POVdown =  180;
+const int leftXAxis = 0;
+const int leftYAxis = 1;
+const int rightXAxis = 4;
+const int rightYAxis = 5;
+const int leftBumper = 5;
+const int rightBumper = 6;
+const int aButton = 1;
+const int bButton = 2;
+const int xButton = 3;
+const int yButton = 4;
+const int leftTrigger = 2;
+const int rightTrigger = 3;
+const int POVup = 0;
+const int POVdown = 180;
 }  // namespace OIConstants
 
 namespace OIControllMapping {
-    // Driver
-    const int driveX      = OIConstants::leftXAxis;
-    const int driveY      = OIConstants::leftYAxis;
-    const int driveRotate = OIConstants::rightXAxis;
-    const int setBreaks   = OIConstants::rightBumper;
-   // Operator 
-    const int intakeAlgae = OIConstants::xButton;
-    const int outtakeAlgae= OIConstants::aButton;
-    const int intakeCoral = OIConstants::leftBumper;
-    const int outtakeCoral= OIConstants::yButton;
-    const int elevatorUp  = OIConstants::POVup;
-    const int elevatorDown= OIConstants::POVdown;
-    const int winchUp     = OIConstants::rightBumper;
-    const int winchDown     = OIConstants::rightTrigger;
-
-
+// Driver
+const int driveX = OIConstants::leftXAxis;
+const int driveY = OIConstants::leftYAxis;
+const int driveRotate = OIConstants::rightXAxis;
+const int setBreaks = OIConstants::rightBumper;
+// Operator
+const int intakeAlgae = OIConstants::xButton;
+const int outtakeAlgae = OIConstants::aButton;
+const int intakeCoral = OIConstants::leftBumper;
+const int outtakeCoral = OIConstants::leftTrigger;
+const int elevatorUp = OIConstants::yButton;
+const int elevatorDown = OIConstants::POVdown;
+const int winchUp = OIConstants::rightBumper;
+const int winchDown = OIConstants::rightTrigger;
 
 }  // namespace OIControllMapping
 
 namespace AlgeeIntakeConstants {
-    const int intakeMotor1CANID = 20;
-    const int winchMotorCANID = 21;
-    const int algeeDetectionLimmitSwich1Port = 0;
-    const int algeeDetectionLimmitSwich2Port = 1;
-    const int intakeSetDetectionLimmitSwichPort = 2;
-    const float IntakeSpeed = 1.0;
-    const float OuttakeSpeed = -1.0;
-    const float WinchSpeedPull = 0.5;
-    const float WinchSpeedPush = -0.5;
-}
+const int intakeMotor1CANID = 99;
+const int winchMotorCANID = 98;
+const int algeeDetectionLimmitSwich1Port = 1;
+const int algeeDetectionLimmitSwich2Port = 2;
+const int intakeSetDetectionLimmitSwichPort = 3;
+const float IntakeSpeed = 1.0f;
+const float OuttakeSpeed = -1.0f;
+const float WinchSpeedPull = 0.5f;
+const float WinchSpeedPush = -0.5f;
+}  // namespace AlgeeIntakeConstants
 
 namespace CoralIntakeConstants {
-    const int intakeMotorCoralCANID = 22;
-    const int coralDetector = 99;
-}
+const int intakeMotorCoralCANID = 20;
+const int intakeLimitSwitchPort = 4;
+const float IntakeSpeed = 0.2f;
+const float OuttakeSpeed = 0.2f;
+const int coralDetector = 99;
+}  // namespace CoralIntakeConstants
 
 namespace ElevatorConstants {
-    const int MotorElevatorCANID = 23;
-    const int ElevatorID = 3;
-}
+const int MotorElevatorCANID = 21;
+const int ElevatorLimitSwID = 0;
+const float HomeDownSlowSpeed = -0.1;
+const float HomeDownFastSpeed = -0.5;
+const float HomeUpSpeed = 0.1;
+const double HomePositionBackOffValue = 7.3;
+}  // namespace ElevatorConstants
 
 
+/*
+ * Limit switch ports
+ * 0 - Elevator
+ * 1 - One of two algae detectors
+ * 2 - One of two algae detectors
+ * 3 - Algae intake home switch
+ * 4 - Coral intake
+*/

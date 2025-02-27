@@ -56,7 +56,12 @@ void Robot::TeleopInit() {
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+  // homeThisThang = m_operatorController.GetRawButton(OIControllMapping::elevatorDown);
+  // if (m_operatorController.GetRawButton(OIControllMapping::elevatorDown) && !homeThisThang) {
+  //   homeThisThang = true;
+  // }
+}
 
 /**
  * This function is called periodically during test mode.
