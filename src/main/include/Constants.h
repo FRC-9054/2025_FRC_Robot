@@ -47,15 +47,15 @@ constexpr double kRearLeftChassisAngularOffset = std::numbers::pi;
 constexpr double kRearRightChassisAngularOffset = std::numbers::pi / 2;
 
 // SPARK MAX CAN IDs
-constexpr int kFrontLeftDrivingCanId = 11;
-constexpr int kRearLeftDrivingCanId = 13;
-constexpr int kFrontRightDrivingCanId = 15;
-constexpr int kRearRightDrivingCanId = 17;
+constexpr int kFrontLeftDrivingCanId = 10;
+constexpr int kRearLeftDrivingCanId = 12;
+constexpr int kFrontRightDrivingCanId = 14;
+constexpr int kRearRightDrivingCanId = 16;
 
-constexpr int kFrontLeftTurningCanId = 10;
-constexpr int kRearLeftTurningCanId = 12;
-constexpr int kFrontRightTurningCanId = 14;
-constexpr int kRearRightTurningCanId = 16;
+constexpr int kFrontLeftTurningCanId = 11;
+constexpr int kRearLeftTurningCanId = 13;
+constexpr int kFrontRightTurningCanId = 15;
+constexpr int kRearRightTurningCanId = 17;
 }  // namespace DriveConstants
 
 namespace ModuleConstants {
@@ -126,26 +126,26 @@ const int outtakeAlgae = OIConstants::aButton;
 const int intakeCoral = OIConstants::leftBumper;
 const int outtakeCoral = OIConstants::leftTrigger;
 const int elevatorUp = OIConstants::yButton;
-const int elevatorDown = OIConstants::POVdown;
+const int elevatorDown = OIConstants:: bButton;
 const int winchUp = OIConstants::rightBumper;
 const int winchDown = OIConstants::rightTrigger;
 
 }  // namespace OIControllMapping
 
 namespace AlgeeIntakeConstants {
-const int intakeMotor1CANID = 99;
-const int winchMotorCANID = 98;
+const int intakeMotor1CANID = 21;
+const int winchMotorCANID =20;
 const int algeeDetectionLimmitSwich1Port = 1;
 const int algeeDetectionLimmitSwich2Port = 2;
 const int intakeSetDetectionLimmitSwichPort = 3;
-const float IntakeSpeed = 1.0f;
-const float OuttakeSpeed = -1.0f;
+const float IntakeSpeed = 0.3f;
+const float OuttakeSpeed = -0.3f;
 const float WinchSpeedPull = 0.5f;
 const float WinchSpeedPush = -0.5f;
 }  // namespace AlgeeIntakeConstants
 
 namespace CoralIntakeConstants {
-const int intakeMotorCoralCANID = 20;
+const int intakeMotorCoralCANID = 40;
 const int intakeLimitSwitchPort = 4;
 const float IntakeSpeed = 0.2f;
 const float OuttakeSpeed = 0.2f;
@@ -153,12 +153,14 @@ const int coralDetector = 99;
 }  // namespace CoralIntakeConstants
 
 namespace ElevatorConstants {
-const int MotorElevatorCANID = 21;
+const int MotorElevatorCANID = 30;
 const int ElevatorLimitSwID = 0;
 const float HomeDownSlowSpeed = -0.1;
 const float HomeDownFastSpeed = -0.5;
 const float HomeUpSpeed = 0.1;
 const double HomePositionBackOffValue = 7.3;
+const float ElevatorUpSpeed = 0.2f;
+const float ElevatorDownSpeed = -0.2f;
 }  // namespace ElevatorConstants
 
 

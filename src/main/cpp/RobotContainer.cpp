@@ -27,9 +27,10 @@
 #include "commands/WinchExtendCommand.h"
 #include "commands/WinchRetractCommand.h"
 #include "subsystems/DriveSubsystem.h"
+#include "commands/AutoCommand.h"
 #include "commands/home.h"
 
-// #include "commands/ElevatorUpCommand.h"
+#include "commands/DriveCommand.h"
 
 using namespace DriveConstants;
 
@@ -115,7 +116,10 @@ void RobotContainer::ConfigureButtonBindings() {
   //  /////////////////////////////////////////////////////////////////////////////////////
 
   frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
-      .WhileTrue(home(&m_elevator).ToPtr());
+      .WhileTrue(ElevatorUp(&m_elevator).ToPtr());
+
+  frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorDown)
+  .WhileTrue(ElevatorDown(&m_elevator).ToPtr());
 
   // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   // frc2::Trigger([this] {
@@ -123,12 +127,19 @@ void RobotContainer::ConfigureButtonBindings() {
   // }).OnTrue(ExampleCommand(&m_subsystem).ToPtr());
 }
 
+
 frc2::Command* RobotContainer::GetAutonomousCommand() {
+  // frc2::SequentialCommandGroup group = new frc2::;
+  // group.AddCommands(  );
+  return new DriveCommand(&m_drive, 0.0, 0.5, 0.0); // .Drive(units::meters_per_second_t{0.0}, units::meters_per_second_t{2}, units::meters_per_second_t{0.0}, true);
+
+}
   //   // Set up config for trajectory
   //   frc::TrajectoryConfig config(AutoConstants::kMaxSpeed,
   //                                AutoConstants::kMaxAcceleration);
   //   // Add kinematics to ensure max speed is actually obeyed
   // //   config.SetKinematics(m_drive.kDriveKinematics);
+  //       frc::Pose2d{3_m, 0_m, 0_deg},
 
   //   // An example trajectory to follow.  All units in meters.
   //   auto exampleTrajectory = frc::TrajectoryGenerator::GenerateTrajectory(
@@ -137,7 +148,6 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   //       // Pass through these two interior waypoints, making an 's' curve
   //       path {frc::Translation2d{1_m, 1_m}, frc::Translation2d{2_m, -1_m}},
   //       // End 3 meters straight ahead of where we started, facing forward
-  //       frc::Pose2d{3_m, 0_m, 0_deg},
   //       // Pass the config
   //       config);
 
@@ -170,4 +180,3 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   //       frc2::InstantCommand(
   //           [this]() { m_drive.Drive(0_mps, 0_mps, 0_rad_per_s, false); },
   //           {}));
-}

@@ -46,5 +46,4 @@ class CoralIntake : public frc2::SubsystemBase {
   // declared private and exposed only through public methods.
  SparkMax m_coralIntakeMotorController{CoralIntakeConstants::intakeMotorCoralCANID, rev::spark::SparkLowLevel::MotorType::kBrushless};
  frc::DigitalInput m_coralDetectionLimitSwitch{CoralIntakeConstants::intakeLimitSwitchPort};
- grpl::LaserCan coralDetector{CoralIntakeConstants::intakeMotorCoralCANID};
 };

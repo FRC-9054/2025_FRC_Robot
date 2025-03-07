@@ -43,12 +43,40 @@ void Elevator::ElevatorUpPeriodic() {
   //   } else {
   //     m_coralIntakeMotorController.Set(CoralIntakeConstants::OuttakeSpeed);
   //   }
-  m_elevatorController.Set(0.2);
+  m_elevatorController.Set(ElevatorConstants::ElevatorUpSpeed);
   dbgln(m_elevatorEncoder.GetPosition())
 }
 
 void Elevator::ElevatorUpEnd() {
-  m_elevatorController.Set(0.0);
+  m_elevatorController.StopMotor();
+  dbgln(m_elevatorEncoder.GetPosition())
+}
+
+void Elevator::ElevatorDownInit() {
+  // if(coralDetector.get_measurement().value().distance_mm < 10){
+  //    m_coralIntakeMotorController.StopMotor();
+  // }
+  // else{
+  //     m_coralIntakeMotorController.Set(1.0);
+  // }
+}
+
+void Elevator::ElevatorDownPeriodic() {
+  // spin motor
+  // don't spin motor while limit switch is pressed though
+
+  // I don't remember why, but the limit switch returns false when it is pressed
+  //   if (m_coralDetectionLimitSwitch.Get() == false) {
+  //     m_coralIntakeMotorController.Set(0.0);
+  //   } else {
+  //     m_coralIntakeMotorController.Set(CoralIntakeConstants::OuttakeSpeed);
+  //   }
+  m_elevatorController.Set(ElevatorConstants::ElevatorDownSpeed);
+  dbgln(m_elevatorEncoder.GetPosition())
+}
+
+void Elevator::ElevatorDownEnd() {
+  m_elevatorController.StopMotor();
   dbgln(m_elevatorEncoder.GetPosition())
 }
 

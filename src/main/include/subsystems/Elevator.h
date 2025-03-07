@@ -28,6 +28,13 @@ class Elevator : public frc2::SubsystemBase {
   void ElevatorUpPeriodic();
 
   void ElevatorUpEnd();
+
+
+   void ElevatorDownInit();
+
+  void ElevatorDownPeriodic();
+
+  void ElevatorDownEnd();
   
   double getElevatorPosition();
 

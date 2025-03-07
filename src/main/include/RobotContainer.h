@@ -20,6 +20,8 @@
 #include "commands/IntakeCoral.h"
 #include "commands/OuttakeAlgae.h"
 #include "commands/OuttakeCoral.h"
+#include "commands/ElevatorUp.h"
+#include "commands/ElevatorDown.h"
 #include "subsystems/AlgeeIntake.h"
 #include "subsystems/CoralIntake.h"
 #include "subsystems/DriveSubsystem.h"
