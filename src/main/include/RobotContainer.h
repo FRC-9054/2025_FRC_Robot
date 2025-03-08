@@ -16,12 +16,12 @@
 #include <frc2/command/RunCommand.h>
 
 #include "Constants.h"
+#include "commands/ElevatorDown.h"
+#include "commands/ElevatorUp.h"
 #include "commands/IntakeAlgae.h"
 #include "commands/IntakeCoral.h"
 #include "commands/OuttakeAlgae.h"
 #include "commands/OuttakeCoral.h"
-#include "commands/ElevatorUp.h"
-#include "commands/ElevatorDown.h"
 #include "subsystems/AlgeeIntake.h"
 #include "subsystems/CoralIntake.h"
 #include "subsystems/DriveSubsystem.h"
@@ -52,7 +52,7 @@ class RobotContainer {
   // The robot's subsystems
   DriveSubsystem m_drive;
   AlgeeIntake m_intakeAlgae;
-  CoralIntake m_intakeCoral;
+  // CoralIntake m_intakeCoral;
   Elevator m_elevator;
   exampleSubsystem m_subsystem;
 

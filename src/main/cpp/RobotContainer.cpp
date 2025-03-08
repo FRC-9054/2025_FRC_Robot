@@ -20,17 +20,16 @@
 #include <utility>
 
 #include "Constants.h"
+#include "commands/AutoCommand.h"
+#include "commands/DriveCommand.h"
 #include "commands/ElevatorUp.h"
 #include "commands/ExampleCommand.h"
 #include "commands/IntakeAlgae.h"
 #include "commands/TestCommand.h"
 #include "commands/WinchExtendCommand.h"
 #include "commands/WinchRetractCommand.h"
-#include "subsystems/DriveSubsystem.h"
-#include "commands/AutoCommand.h"
 #include "commands/home.h"
-
-#include "commands/DriveCommand.h"
+#include "subsystems/DriveSubsystem.h"
 
 using namespace DriveConstants;
 
@@ -99,16 +98,16 @@ void RobotContainer::ConfigureButtonBindings() {
   //  /////////////////////////////////////////////////////////////////////////////////////
   /*     WRITE YOUR CORAL COMMANDS HERE     */
   /*vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*/
-  frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
-      .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
+  // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
+  //     .WhileTrue(IntakeCoral(&m_intakeCoral).ToPtr());
 
-  frc2::Trigger([this]() {
-    if (m_operatorController.GetRawAxis(OIControllMapping::outtakeCoral) >
-        0.5) {
-      return true;
-    }
-    return false;
-  }).WhileTrue(OuttakeCoral(&m_intakeCoral).ToPtr());
+  // frc2::Trigger([this]() {
+  //   if (m_operatorController.GetRawAxis(OIControllMapping::outtakeCoral) >
+  //       0.5) {
+  //     return true;
+  //   }
+  //   return false;
+  // }).WhileTrue(OuttakeCoral(&m_intakeCoral).ToPtr());
   /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
   /*     WRITE YOUR CORAL COMMANDS HERE     */
   //  DAMIEN  /////// DAMIEN  /////// DAMIEN  /////////   DAMIEN  //////////
@@ -119,7 +118,7 @@ void RobotContainer::ConfigureButtonBindings() {
       .WhileTrue(ElevatorUp(&m_elevator).ToPtr());
 
   frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorDown)
-  .WhileTrue(ElevatorDown(&m_elevator).ToPtr());
+      .WhileTrue(ElevatorDown(&m_elevator).ToPtr());
 
   // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   // frc2::Trigger([this] {
@@ -127,56 +126,57 @@ void RobotContainer::ConfigureButtonBindings() {
   // }).OnTrue(ExampleCommand(&m_subsystem).ToPtr());
 }
 
-
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // frc2::SequentialCommandGroup group = new frc2::;
   // group.AddCommands(  );
-  return new DriveCommand(&m_drive, 0.0, 0.5, 0.0); // .Drive(units::meters_per_second_t{0.0}, units::meters_per_second_t{2}, units::meters_per_second_t{0.0}, true);
-
+  return new DriveCommand(&m_drive, 0.0, 0.5,
+                          0.0);  // .Drive(units::meters_per_second_t{0.0},
+                                 // units::meters_per_second_t{2},
+                                 // units::meters_per_second_t{0.0}, true);
 }
-  //   // Set up config for trajectory
-  //   frc::TrajectoryConfig config(AutoConstants::kMaxSpeed,
-  //                                AutoConstants::kMaxAcceleration);
-  //   // Add kinematics to ensure max speed is actually obeyed
-  // //   config.SetKinematics(m_drive.kDriveKinematics);
-  //       frc::Pose2d{3_m, 0_m, 0_deg},
+//   // Set up config for trajectory
+//   frc::TrajectoryConfig config(AutoConstants::kMaxSpeed,
+//                                AutoConstants::kMaxAcceleration);
+//   // Add kinematics to ensure max speed is actually obeyed
+// //   config.SetKinematics(m_drive.kDriveKinematics);
+//       frc::Pose2d{3_m, 0_m, 0_deg},
 
-  //   // An example trajectory to follow.  All units in meters.
-  //   auto exampleTrajectory = frc::TrajectoryGenerator::GenerateTrajectory(
-  //       // Start at the origin facing the +X direction
-  //       frc::Pose2d{0_m, 0_m, 0_deg},
-  //       // Pass through these two interior waypoints, making an 's' curve
-  //       path {frc::Translation2d{1_m, 1_m}, frc::Translation2d{2_m, -1_m}},
-  //       // End 3 meters straight ahead of where we started, facing forward
-  //       // Pass the config
-  //       config);
+//   // An example trajectory to follow.  All units in meters.
+//   auto exampleTrajectory = frc::TrajectoryGenerator::GenerateTrajectory(
+//       // Start at the origin facing the +X direction
+//       frc::Pose2d{0_m, 0_m, 0_deg},
+//       // Pass through these two interior waypoints, making an 's' curve
+//       path {frc::Translation2d{1_m, 1_m}, frc::Translation2d{2_m, -1_m}},
+//       // End 3 meters straight ahead of where we started, facing forward
+//       // Pass the config
+//       config);
 
-  //   frc::ProfiledPIDController<units::radians> thetaController{
-  //       AutoConstants::kPThetaController, 0, 0,
-  //       AutoConstants::kThetaControllerConstraints};
+//   frc::ProfiledPIDController<units::radians> thetaController{
+//       AutoConstants::kPThetaController, 0, 0,
+//       AutoConstants::kThetaControllerConstraints};
 
-  //   thetaController.EnableContinuousInput(units::radian_t{-std::numbers::pi},
-  //                                         units::radian_t{std::numbers::pi});
+//   thetaController.EnableContinuousInput(units::radian_t{-std::numbers::pi},
+//                                         units::radian_t{std::numbers::pi});
 
-  //   frc2::SwerveControllerCommand<4> swerveControllerCommand(
-  //       exampleTrajectory, [this]() { return m_drive.GetPose(); },
+//   frc2::SwerveControllerCommand<4> swerveControllerCommand(
+//       exampleTrajectory, [this]() { return m_drive.GetPose(); },
 
-  //       m_drive.kDriveKinematics,
+//       m_drive.kDriveKinematics,
 
-  //       frc::PIDController{AutoConstants::kPXController, 0, 0},
-  //       frc::PIDController{AutoConstants::kPYController, 0, 0},
-  //       thetaController,
+//       frc::PIDController{AutoConstants::kPXController, 0, 0},
+//       frc::PIDController{AutoConstants::kPYController, 0, 0},
+//       thetaController,
 
-  //       [this](auto moduleStates) { m_drive.SetModuleStates(moduleStates); },
+//       [this](auto moduleStates) { m_drive.SetModuleStates(moduleStates); },
 
-  //       {&m_drive});
+//       {&m_drive});
 
-  //   // Reset odometry to the starting pose of the trajectory.
-  //   m_drive.ResetOdometry(exampleTrajectory.InitialPose());
+//   // Reset odometry to the starting pose of the trajectory.
+//   m_drive.ResetOdometry(exampleTrajectory.InitialPose());
 
-  //   // no auto
-  //   return new frc2::SequentialCommandGroup(
-  //       std::move(swerveControllerCommand),
-  //       frc2::InstantCommand(
-  //           [this]() { m_drive.Drive(0_mps, 0_mps, 0_rad_per_s, false); },
-  //           {}));
+//   // no auto
+//   return new frc2::SequentialCommandGroup(
+//       std::move(swerveControllerCommand),
+//       frc2::InstantCommand(
+//           [this]() { m_drive.Drive(0_mps, 0_mps, 0_rad_per_s, false); },
+//           {}));
