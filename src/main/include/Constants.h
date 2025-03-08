@@ -126,7 +126,7 @@ const int outtakeAlgae = OIConstants::aButton;
 const int intakeCoral = OIConstants::leftBumper;
 const int outtakeCoral = OIConstants::leftTrigger;
 const int elevatorUp = OIConstants::yButton;
-const int elevatorDown = OIConstants:: bButton;
+const int elevatorDown = OIConstants::bButton;
 const int winchUp = OIConstants::rightBumper;
 const int winchDown = OIConstants::rightTrigger;
 
@@ -134,12 +134,12 @@ const int winchDown = OIConstants::rightTrigger;
 
 namespace AlgeeIntakeConstants {
 const int intakeMotor1CANID = 21;
-const int winchMotorCANID =20;
+const int winchMotorCANID = 20;
 const int algeeDetectionLimmitSwich1Port = 1;
 const int algeeDetectionLimmitSwich2Port = 2;
 const int intakeSetDetectionLimmitSwichPort = 3;
-const float IntakeSpeed = 0.3f;
-const float OuttakeSpeed = -0.3f;
+const float IntakeSpeed = 0.15f;   // 0.3
+const float OuttakeSpeed = 0.15f;  // -.3
 const float WinchSpeedPull = 0.5f;
 const float WinchSpeedPush = -0.5f;
 }  // namespace AlgeeIntakeConstants
@@ -163,7 +163,6 @@ const float ElevatorUpSpeed = 0.2f;
 const float ElevatorDownSpeed = -0.2f;
 }  // namespace ElevatorConstants
 
-
 /*
  * Limit switch ports
  * 0 - Elevator
@@ -171,4 +170,4 @@ const float ElevatorDownSpeed = -0.2f;
  * 2 - One of two algae detectors
  * 3 - Algae intake home switch
  * 4 - Coral intake
-*/
+ */
