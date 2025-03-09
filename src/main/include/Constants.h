@@ -27,18 +27,22 @@
 namespace DriveConstants {
 // Driving Parameters - Note that these are not the maximum capable speeds of
 // the robot, rather the allowed maximum speeds
-constexpr units::meters_per_second_t kMaxSpeed = 4.8_mps;
-constexpr units::radians_per_second_t kMaxAngularSpeed{2 * std::numbers::pi};
+constexpr units::meters_per_second_t kMaxSpeed = 3.6_mps;  // 4.8_mps
+constexpr units::radians_per_second_t kMaxAngularSpeed{
+    1.5 * std::numbers::pi};  // kMaxAngularSpeed{2 * std::numbers::pi}
 
-constexpr double kDirectionSlewRate = 1.2;   // radians per second
-constexpr double kMagnitudeSlewRate = 1.8;   // percent per second (1 = 100%)
-constexpr double kRotationalSlewRate = 2.0;  // percent per second (1 = 100%)
+constexpr double kDirectionSlewRate = 0.3;  // radians per second // 1.2
+constexpr double kMagnitudeSlewRate =
+    0.8;  // percent per second (1 = 100%)    // 1.8
+constexpr double kRotationalSlewRate =
+    0.8;  // percent per second (1 = 100%)    // 2.0
 
 // Chassis configuration
 constexpr units::meter_t kTrackWidth =
-    0.6731_m;  // Distance between centers of right and left wheels on robot
+    0.5334_m;  // Distance between centers of right and left wheels on robot
 constexpr units::meter_t kWheelBase =
-    0.6731_m;  // Distance between centers of front and back wheels on robot
+    0.5334_m;  // Distance between centers of front and back wheels on robot //
+               // 0.6731_m
 
 // Angular offsets of the modules relative to the chassis in radians
 constexpr double kFrontLeftChassisAngularOffset = -std::numbers::pi / 2;
@@ -138,8 +142,8 @@ const int winchMotorCANID = 20;
 const int algeeDetectionLimmitSwich1Port = 1;
 const int algeeDetectionLimmitSwich2Port = 2;
 const int intakeSetDetectionLimmitSwichPort = 3;
-const float IntakeSpeed = 0.15f;   // 0.3
-const float OuttakeSpeed = 0.15f;  // -.3
+const float IntakeSpeed = 0.2;    // 0.3
+const float OuttakeSpeed = 0.15;  // -.3
 const float WinchSpeedPull = 0.5f;
 const float WinchSpeedPush = -0.5f;
 }  // namespace AlgeeIntakeConstants
