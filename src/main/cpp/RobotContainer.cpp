@@ -65,6 +65,7 @@ RobotContainer::RobotContainer() {
   // m_intakeAlgae.Run(frc2::RunCommand([this] {std::cout <<
   //     "Something.go()" << std::endl;},{&m_intakeAlgae}));
 }
+
 bool RobotContainer::ConvertAxisToButton(int axisNum) {
   if (m_operatorController.GetRawAxis(axisNum) > 0.5) {
     return true;

@@ -17,11 +17,54 @@
 #define dbgln2(x, y)
 #endif
 
-Elevator::Elevator() = default;
+Elevator::Elevator() {
+  m_elevatorEncoder.SetPosition(100.0);
+  holdingPosition = m_elevatorEncoder.GetPosition();
+  holdCurrentPosition = true;
+  m_elevatorSparkBaseConfig.SetIdleMode(
+      rev::spark::SparkBaseConfig::IdleMode::kCoast);
+  // m_elevatorClosedLoopConfig.Pid();
+  m_elevatorController.Configure(
+      m_elevatorSparkBaseConfig,
+      rev::spark::SparkMax::ResetMode::kNoResetSafeParameters,
+      rev::spark::SparkMax::PersistMode::kNoPersistParameters);
+  m_pidController.SetP(kP);
+  m_pidController.SetI(kI);
+  m_pidController.SetD(kD);
+  m_pidController.SetIZone(kIz);
+  m_pidController.SetFF(kFF);
+  m_pidController.SetOutputRange(kMinOutput, kMaxOutput);
+  
+}
 
-// This method will be called once per scheduler run
+// This method will be called once per sccPheduler run
 void Elevator::Periodic() {
+  // m_elevatorClosedLoopController.SetReference(1, SparkMax::ControlType::kPosition, ClosedLoopSlot::kSlot0);
   // spin motors to intake coral, when sensor senses coral, stop motor
+  if (holdCurrentPosition) {
+    // hold current position
+    HoldPosition(holdingPosition);
+  } else {
+    // do nothing...
+  }
+  // thats it
+  // what were you expecting?
+  // go home
+  // move on
+  // quit reading
+  // stop
+  // Stop
+  // STOP
+  // i give up
+  // 💀
+}
+
+void Elevator::HoldPosition(float desiredPosition) {
+  // m_elevatorClosedLoopController.SetReference(desiredPosition,
+  // rev::spark::SparkLowLevel::ControlType::kPosition);
+  // m_pidController.SetReference(
+  //     desiredPosition, rev::spark::SparkLowLevel::ControlType::kPosition);
+  m_elevatorClosedLoopController.SetReference(desiredPosition, SparkMax::ControlType::kPosition, ClosedLoopSlot::kSlot0);
 }
 
 void Elevator::ElevatorUpInit() {
@@ -31,6 +74,7 @@ void Elevator::ElevatorUpInit() {
   // else{
   //     m_coralIntakeMotorController.Set(1.0);
   // }
+  holdCurrentPosition = false;
 }
 
 void Elevator::ElevatorUpPeriodic() {
@@ -49,7 +93,8 @@ void Elevator::ElevatorUpPeriodic() {
 
 void Elevator::ElevatorUpEnd() {
   m_elevatorController.StopMotor();
-  dbgln(m_elevatorEncoder.GetPosition())
+  holdingPosition = m_elevatorEncoder.GetPosition();
+  dbgln(holdingPosition) holdCurrentPosition = true;
 }
 
 void Elevator::ElevatorDownInit() {
@@ -80,66 +125,68 @@ void Elevator::ElevatorDownEnd() {
   dbgln(m_elevatorEncoder.GetPosition())
 }
 
-double Elevator::getElevatorPosition(){
-  return  m_elevatorEncoder.GetPosition();
+double Elevator::getElevatorPosition() {
+  return m_elevatorEncoder.GetPosition();
 }
 
-bool Elevator::getLimitSwitch(){
+bool Elevator::getLimitSwitch() {
   bool l_swPos = m_elevatorLimitSwitch.Get();
-  dbg2("",l_swPos)
-  return l_swPos;
+  dbg2("", l_swPos) return l_swPos;
 }
 
 void Elevator::homeInit() {
   backingOff = false;
   firstStep = true;
-  //isHomed = false;
+  // isHomed = false;
 }
 
-void Elevator::homePeriodic(){
+void Elevator::homePeriodic() {
   // dbg2("backingOff = ", backingOff)
   // dbg2("      firstStep = ", firstStep)
   // dbgln2("      isHomed = ", isHomed)
-  if(isHomed == false){
+  if (isHomed == false) {
     dbgln("NOT AT HOME");
-    if(firstStep){           // if this is the first step
-      if(getLimitSwitch()){    // if we just hit the limit sw for the first time
+    if (firstStep) {           // if this is the first step
+      if (getLimitSwitch()) {  // if we just hit the limit sw for the first time
         dbgln("if we just hit the limmit sw for the first time");
         m_elevatorController.Set(0.0);
-        m_elevatorEncoder.SetPosition(0);   // zero the encoder
+        m_elevatorEncoder.SetPosition(0);  // zero the encoder
         // m_elevatorController.Set(ElevatorConstants::HomeUpSpeed);
         backingOff = true;
         firstStep = false;
         return;
-      } else {    // If we havent hit the limit sw yet
+      } else {  // If we havent hit the limit sw yet
         dbgln("If we havent hit the limit sw yet");
         m_elevatorController.Set(ElevatorConstants::HomeDownFastSpeed);
         return;
       }
-    } else {   // If its not the first step
+    } else {  // If its not the first step
       dbgln("if its not the first step");
-      if (backingOff) {   // if we are backing off of the limmit sw
+      if (backingOff) {  // if we are backing off of the limmit sw
         dbgln("if we are backing off the limmit switch");
         m_elevatorController.Set(ElevatorConstants::HomeUpSpeed);
-        if (getElevatorPosition() >= ElevatorConstants::HomePositionBackOffValue) {    // If we have gone up far enough
+        if (getElevatorPosition() >=
+            ElevatorConstants::HomePositionBackOffValue) {  // If we have gone
+                                                            // up far enough
           dbgln("if we have gone far enough");
           m_elevatorController.Set(ElevatorConstants::HomeDownSlowSpeed);
           backingOff = false;
           return;
-        } else {        // If we havent gone far enough up
+        } else {  // If we havent gone far enough up
           dbgln("if we havent gone far enough up");
           return;
         }
-      } else {     // if we arent backing off of the limmit sw and it's the second step
-      dbgln("if we arent backing off the limmit sw");
-        if (getLimitSwitch()) {     // limit sw is triggered
-        dbgln("limit sw is triggered");
+      } else {  // if we arent backing off of the limmit sw and it's the second
+                // step
+        dbgln("if we arent backing off the limmit sw");
+        if (getLimitSwitch()) {  // limit sw is triggered
+          dbgln("limit sw is triggered");
           m_elevatorController.Set(0.0);
           isHomed = true;
           m_elevatorEncoder.SetPosition(0);
           return;
-        } else {     // limit sw not pressed
-        dbgln("limit sw not pressed");
+        } else {  // limit sw not pressed
+          dbgln("limit sw not pressed");
           m_elevatorController.Set(ElevatorConstants::HomeDownSlowSpeed);
           return;
         }
@@ -153,9 +200,7 @@ void Elevator::homePeriodic(){
   return;
 }
 
-bool Elevator::homeEnd() {
-  return isHomed;
-}
+bool Elevator::homeEnd() { return isHomed; }
 
 // void ElevatorSubsystem::PlaceCoralInit() {
 //   // nothing ever happens in these functions
