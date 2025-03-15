@@ -40,6 +40,8 @@ class RobotContainer {
   RobotContainer();
 
   frc2::Command* GetAutonomousCommand();
+  
+  float InputCurve(float input, float expoConstant);
 
  private:
   // The driver's controller
