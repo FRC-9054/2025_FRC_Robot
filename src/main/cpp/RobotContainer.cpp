@@ -67,7 +67,14 @@ RobotContainer::RobotContainer() {
 }
 
 float RobotContainer::InputCurve(float input, float expoConstant) {
-  float m_output = pow(input, expoConstant);
+  float m_output = input;
+  if (input >= 0) {
+    m_output = pow(input, expoConstant);
+  } else if (input < 0 ) {
+    input = -input;
+    m_output = pow(input, expoConstant);
+    m_output = -m_output;
+  }
   return m_output;
 }
 
