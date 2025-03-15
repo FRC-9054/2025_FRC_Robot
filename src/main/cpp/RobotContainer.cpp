@@ -145,7 +145,7 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   return new frc2::RunCommand(
       [this] {
         m_drive.Drive(
-            -units::meters_per_second_t{1},
+            -units::meters_per_second_t{0.5},
             -units::meters_per_second_t{0},
             -units::radians_per_second_t{0},
             true);
