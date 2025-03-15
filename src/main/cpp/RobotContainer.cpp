@@ -135,10 +135,15 @@ void RobotContainer::ConfigureButtonBindings() {
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // frc2::SequentialCommandGroup group = new frc2::;
   // group.AddCommands(  );
-  return new DriveCommand(&m_drive, 0.0, 0.5,
-                          0.0);  // .Drive(units::meters_per_second_t{0.0},
-                                 // units::meters_per_second_t{2},
-                                 // units::meters_per_second_t{0.0}, true);
+  return new frc2::RunCommand(
+      [this] {
+        m_drive.Drive(
+            -units::meters_per_second_t{1},
+            -units::meters_per_second_t{0},
+            -units::radians_per_second_t{0},
+            true);
+      },
+      {&m_drive});
 }
 //   // Set up config for trajectory
 //   frc::TrajectoryConfig config(AutoConstants::kMaxSpeed,
