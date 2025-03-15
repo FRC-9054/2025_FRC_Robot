@@ -49,15 +49,15 @@ RobotContainer::RobotContainer() {
   m_drive.SetDefaultCommand(frc2::RunCommand(
       [this] {
         m_drive.Drive(
-            -units::meters_per_second_t{frc::ApplyDeadband(
+            -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveY),
-                OIConstants::kDriveDeadband)},
-            -units::meters_per_second_t{frc::ApplyDeadband(
+                OIConstants::kDriveDeadband), 1)},
+            -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveX),
-                OIConstants::kDriveDeadband)},
-            -units::radians_per_second_t{frc::ApplyDeadband(
+                OIConstants::kDriveDeadband), 1)},
+            -units::radians_per_second_t{InputCurve(frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveRotate),
-                OIConstants::kDriveDeadband)},
+                OIConstants::kDriveDeadband), 1)},
             true);
       },
       {&m_drive}));
@@ -65,6 +65,12 @@ RobotContainer::RobotContainer() {
   // m_intakeAlgae.Run(frc2::RunCommand([this] {std::cout <<
   //     "Something.go()" << std::endl;},{&m_intakeAlgae}));
 }
+
+float RobotContainer::InputCurve(float input, float expoConstant) {
+  float m_output = pow(input, expoConstant);
+  return m_output;
+}
+
 bool RobotContainer::ConvertAxisToButton(int axisNum) {
   if (m_operatorController.GetRawAxis(axisNum) > 0.5) {
     return true;
