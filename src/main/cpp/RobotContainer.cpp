@@ -51,13 +51,13 @@ RobotContainer::RobotContainer() {
         m_drive.Drive(
             -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveY),
-                OIConstants::kDriveDeadband), 1)},
+                OIConstants::kDriveDeadband), DriveConstants::kyInputCurveFactor)},
             -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveX),
-                OIConstants::kDriveDeadband), 1)},
+                OIConstants::kDriveDeadband), DriveConstants::kxInputCurveFactor)},
             -units::radians_per_second_t{InputCurve(frc::ApplyDeadband(
                 m_driverController.GetRawAxis(OIControllMapping::driveRotate),
-                OIConstants::kDriveDeadband), 1)},
+                OIConstants::kDriveDeadband), DriveConstants::krotInputCurveFactor)},
             true);
       },
       {&m_drive}));

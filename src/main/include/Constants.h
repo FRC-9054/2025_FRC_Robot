@@ -36,6 +36,10 @@ constexpr double kMagnitudeSlewRate =
     0.63;  // percent per second (1 = 100%)    // 1.8    // .8   //0.6
 constexpr double kRotationalSlewRate =
     0.8;  // percent per second (1 = 100%)    // 2.0
+    
+constexpr double kxInputCurveFactor = 1;
+constexpr double kyInputCurveFactor = 1;
+constexpr double krotInputCurveFactor = 1;
 
 // Chassis configuration
 constexpr units::meter_t kTrackWidth =
