@@ -37,8 +37,8 @@ constexpr double kMagnitudeSlewRate =
 constexpr double kRotationalSlewRate =
     0.8;  // percent per second (1 = 100%)    // 2.0
     
-constexpr double kxInputCurveFactor = 1;
-constexpr double kyInputCurveFactor = 1;
+constexpr double kxInputCurveFactor = 1.75;
+constexpr double kyInputCurveFactor = 1.75;
 constexpr double krotInputCurveFactor = 1;
 
 // Chassis configuration
@@ -104,7 +104,7 @@ extern const frc::TrapezoidProfile<units::radians>::Constraints
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
 constexpr int kOperatorControllerPort = 1;
-constexpr double kDriveDeadband = 0.05;
+constexpr double kDriveDeadband = 0.1;
 
 const int leftXAxis = 0;
 const int leftYAxis = 1;
@@ -146,7 +146,7 @@ const int winchMotorCANID = 20;
 const int algeeDetectionLimmitSwich1Port = 1;
 const int algeeDetectionLimmitSwich2Port = 2;
 const int intakeSetDetectionLimmitSwichPort = 3;
-const float IntakeSpeed = 0.2;    // 0.3
+const float IntakeSpeed = 0.25;    // 0.3
 const float OuttakeSpeed = 0.15;  // -.3
 const float WinchSpeedPull = 0.5f;
 const float WinchSpeedPush = -0.5f;
