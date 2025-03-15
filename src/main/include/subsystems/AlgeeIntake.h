@@ -60,4 +60,15 @@ class AlgeeIntake : public frc2::SubsystemBase {
   frc::DigitalInput m_algeeDetectionLimmitSwich1{AlgeeIntakeConstants::algeeDetectionLimmitSwich1Port};
   frc::DigitalInput m_algeeDetectionLimmitSwich2{AlgeeIntakeConstants::algeeDetectionLimmitSwich2Port};
   frc::DigitalInput m_intakeInPlaceDetectionSwitch{AlgeeIntakeConstants::intakeSetDetectionLimmitSwichPort};
+  SparkRelativeEncoder m_winchMotorEncoder = m_winchMotorController.GetEncoder();
+  
+  enum CurrentCommand {
+    holdPosition,
+    extend,
+    retract
+  };
+  
+  CurrentCommand currentlySelectedCommand = holdPosition;
+  
+  float m_holdingPos = 100;
 };

@@ -21,12 +21,30 @@ using namespace rev::spark;
 AlgeeIntake::AlgeeIntake() {
   // bite me
   m_algeeIntakeMotorController.SetInverted(true);
+  m_
 }
 // AlgeeIntake::AlgeeIntake(const int Motor1CANID, const int algeeDetectionPort)
 // : m_algeeIntakeMotorController() {} This method will be called once per
 // scheduler run
 void AlgeeIntake::Periodic() {
   // dbgln("void AlgeeIntake::Periodic()")
+  switch (currentlySelectedCommand)
+  {
+  case holdPosition:
+    /* code */
+    break;
+    
+  case retract:
+    /* code */
+    break;
+    
+  case extend:
+    /* code */
+    break;
+  
+  default:
+    break;
+  }
 }
 
 void AlgeeIntake::IntakeAlgeeInit() {
