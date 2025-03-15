@@ -120,11 +120,11 @@ void RobotContainer::ConfigureButtonBindings() {
   //  DAMIEN
   //  /////////////////////////////////////////////////////////////////////////////////////
 
-  frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
-      .WhileTrue(ElevatorUp(&m_elevator).ToPtr());
+  // frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp)
+  //     .WhileTrue(ElevatorUp(&m_elevator).ToPtr());
 
-  frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorDown)
-      .WhileTrue(ElevatorDown(&m_elevator).ToPtr());
+  // frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorDown)
+  //     .WhileTrue(ElevatorDown(&m_elevator).ToPtr());
 
   // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   // frc2::Trigger([this] {
