@@ -37,8 +37,8 @@ constexpr double kMagnitudeSlewRate =
 constexpr double kRotationalSlewRate =
     0.8;  // percent per second (1 = 100%)    // 2.0
     
-constexpr double kxInputCurveFactor = 1.75;
-constexpr double kyInputCurveFactor = 1.75;
+constexpr double kxInputCurveFactor = 1.8;
+constexpr double kyInputCurveFactor = 1.8;
 constexpr double krotInputCurveFactor = 1;
 
 // Chassis configuration

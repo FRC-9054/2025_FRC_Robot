@@ -46,21 +46,41 @@ RobotContainer::RobotContainer() {
   // On the controller X is left and right, Y is forwards and backwards
   // The subsystem defines X movement to be forwards and backwards, Y movement
   // to be left and right Hence the flipped axes below
-  m_drive.SetDefaultCommand(frc2::RunCommand(
+  
+  // // logitech controller drive mapping
+  // m_drive.SetDefaultCommand(frc2::RunCommand(      // logitech controller drive mapping
+  //     [this] {
+  //       m_drive.Drive(
+  //           -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
+  //               m_driverController.GetRawAxis(OIControllMapping::driveY),
+  //               OIConstants::kDriveDeadband), DriveConstants::kyInputCurveFactor)},
+  //           -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
+  //               m_driverController.GetRawAxis(OIControllMapping::driveX),
+  //               OIConstants::kDriveDeadband), DriveConstants::kxInputCurveFactor)},
+  //           -units::radians_per_second_t{InputCurve(frc::ApplyDeadband(
+  //               m_driverController.GetRawAxis(OIControllMapping::driveRotate),
+  //               OIConstants::kDriveDeadband), DriveConstants::krotInputCurveFactor)},
+  //           true);
+  //     },
+  //     {&m_drive}));   // logitech controller drive mapping
+      
+      
+      // xbox controller mapping
+      m_drive.SetDefaultCommand(frc2::RunCommand(      // xbox controller mapping
       [this] {
         m_drive.Drive(
             -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
-                m_driverController.GetRawAxis(OIControllMapping::driveY),
+                m_driverController.GetLeftY(),
                 OIConstants::kDriveDeadband), DriveConstants::kyInputCurveFactor)},
             -units::meters_per_second_t{InputCurve(frc::ApplyDeadband(
-                m_driverController.GetRawAxis(OIControllMapping::driveX),
+                m_driverController.GetLeftX(),
                 OIConstants::kDriveDeadband), DriveConstants::kxInputCurveFactor)},
             -units::radians_per_second_t{InputCurve(frc::ApplyDeadband(
-                m_driverController.GetRawAxis(OIControllMapping::driveRotate),
+                m_driverController.GetRightX(),
                 OIConstants::kDriveDeadband), DriveConstants::krotInputCurveFactor)},
             true);
       },
-      {&m_drive}));
+      {&m_drive}));      // xbox controller mapping
 
   // m_intakeAlgae.Run(frc2::RunCommand([this] {std::cout <<
   //     "Something.go()" << std::endl;},{&m_intakeAlgae}));
@@ -86,8 +106,18 @@ bool RobotContainer::ConvertAxisToButton(int axisNum) {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-  frc2::JoystickButton(&m_driverController, OIControllMapping::setBreaks)
+  
+  // // logitech controller drive mapping
+  // frc2::JoystickButton(&m_driverController, OIControllMapping::setBreaks)      // logitech controller drive mapping
+  //     .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
+  //     // logitech controller drive mapping
+      
+      
+      // xbox controller mapping
+  frc2::JoystickButton(&m_driverController,      // xbox controller mapping
+                       frc::XboxController::Button::kRightBumper)
       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
+      // xbox controller mapping
 
   frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
       .WhileTrue(IntakeAlgae(&m_intakeAlgae).ToPtr());
