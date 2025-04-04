@@ -81,9 +81,9 @@ void RobotContainer::ConfigureButtonBindings() {
     frc2::JoystickButton(&m_operatorController, OIControllMapping::winchUp)
         .WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
 
-         //frc2::JoystickButton(&m_operatorController, ConvertAxisToButton(OIControllMapping::winchDown))
-        //.WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
-        //.WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
+        //  frc2::JoystickButton(&m_operatorController, ConvertAxisToButton(OIControllMapping::winchDown))
+        // .WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
+        // .WhileTrue(new frc2::RunCommand([this] { m_intakeAlgae.PlaceAlgee(); }, {&m_intakeAlgae}));
 
     //frc2::Trigger(ConvertAxisToButton(OIControllMapping::winchDown),(WinchRetractCommand(&m_intakeAlgae).ToPtr()));
 
@@ -96,7 +96,7 @@ void RobotContainer::ConfigureButtonBindings() {
         }
     }.WhileTrue(WinchRetractCommand(&m_intakeAlgae).ToPtr());
 
-    //ConvertAxisToButton(OIControllMapping::winchDown).WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
+    // ConvertAxisToButton(OIControllMapping::winchDown).WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
         
 
     // frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral)
@@ -122,8 +122,8 @@ void RobotContainer::ConfigureButtonBindings() {
     // Working button-subsystem binding
     frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeCoral).WhileTrue(m_subsystem.ExampleMethodCommand());
     // Working button-command binding
-    // frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
-    // .WhileTrue(ExampleCommand(&m_subsystem).ToPtr());
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeCoral)
+    .WhileTrue(ExampleCommand(&m_subsystem).ToPtr());
 
     // frc2::JoystickButton(&m_operatorController, OIControllMapping::elevatorUp).WhileTrue(m_elevator.ElevatorUp());
     

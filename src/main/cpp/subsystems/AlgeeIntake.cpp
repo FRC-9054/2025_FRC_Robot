@@ -40,13 +40,13 @@ void AlgeeIntake::IntakeAlgeeInit() {
 
 void AlgeeIntake::IntakeAlgeePeriodic() {
   // m_algeeIntakeMotorController.Set(1.0);
-  if (m_algeeDetectionLimmitSwich1.Get() || m_algeeDetectionLimmitSwich2.Get()) {
-    dbgln("I have algae!");
-    AlgeeIntake::IntakeAlgeeEnd();
-  } else{
-    dbgln(" no algae :( ");
+  // if (m_algeeDetectionLimmitSwich1.Get() || m_algeeDetectionLimmitSwich2.Get()) {
+  //   dbgln("I have algae!");
+    // AlgeeIntake::IntakeAlgeeEnd();
+  // } else{
+    // dbgln(" no algae :( ");
     m_algeeIntakeMotorController.Set(AlgeeIntakeConstants::IntakeSpeed);
-  }
+  // }
 }
 
 void AlgeeIntake::IntakeAlgeeEnd() {
