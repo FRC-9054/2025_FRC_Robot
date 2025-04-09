@@ -25,8 +25,10 @@ class Robot : public frc::TimedRobot {
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
   frc2::Command* m_autonomousCommand;
+  
+  frc2::Command* m_algaeIntake
 
-    frc::GenericHID m_operatorController{OIConstants::kOperatorControllerPort};
+  frc::GenericHID m_operatorController{OIConstants::kOperatorControllerPort};
 
   RobotContainer m_container;
 };

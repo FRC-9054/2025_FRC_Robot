@@ -50,6 +50,8 @@ void Robot::TeleopInit() {
   if (m_autonomousCommand) {
     m_autonomousCommand->Cancel();
   }
+  // RobotContainer::m_intakeAlgae -> 
+  // RobotContainer m_intakeAlgae; m_intakeAlgae.HoldAlgeeInit();
 }
 
 /**

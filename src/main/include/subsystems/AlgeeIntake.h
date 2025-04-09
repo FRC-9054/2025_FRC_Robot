@@ -22,6 +22,14 @@ class AlgeeIntake : public frc2::SubsystemBase {
 
   // Subsystem methods go here.
   // vvvvvvvvvvvvvvvvvvvvvvvvv
+  void HoldAlgeeInit();
+
+  void HoldAlgeePeriodic();
+
+  void HoldAlgeeEnd();
+  
+  
+  
   void IntakeAlgeeInit();
 
   void IntakeAlgeePeriodic();
@@ -60,4 +68,21 @@ class AlgeeIntake : public frc2::SubsystemBase {
   frc::DigitalInput m_algeeDetectionLimmitSwich1{AlgeeIntakeConstants::algeeDetectionLimmitSwich1Port};
   frc::DigitalInput m_algeeDetectionLimmitSwich2{AlgeeIntakeConstants::algeeDetectionLimmitSwich2Port};
   frc::DigitalInput m_intakeInPlaceDetectionSwitch{AlgeeIntakeConstants::intakeSetDetectionLimmitSwichPort};
+  SparkRelativeEncoder m_winchMotorEncoder = m_winchMotorController.GetEncoder();
+  SparkRelativeEncoder m_algaeIntakeMotorEncoder = m_algeeIntakeMotorController.GetEncoder();
+  
+  enum CurrentCommand {
+    holdPosition,
+    extend,
+    retract,
+    intake,
+    place,
+    holdAlgae
+  };
+  
+  CurrentCommand currentlySelectedCommand = holdPosition;
+  CurrentCommand currentlySelectedIntakeCommand = holdAlgae;
+  
+  float m_holdingPos = 100;
+  float m_intakeMotorHoldingPosition = 100;
 };
