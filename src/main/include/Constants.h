@@ -104,7 +104,7 @@ extern const frc::TrapezoidProfile<units::radians>::Constraints
 namespace OIConstants {
 constexpr int kDriverControllerPort = 0;
 constexpr int kOperatorControllerPort = 1;
-constexpr double kDriveDeadband = 0.05;
+constexpr double kDriveDeadband = 0.1;
 
 const int leftXAxis = 0;
 const int leftYAxis = 1;
@@ -148,8 +148,8 @@ const int algeeDetectionLimmitSwich2Port = 2;
 const int intakeSetDetectionLimmitSwichPort = 3;
 const float IntakeSpeed = 0.25;    // 0.3
 const float OuttakeSpeed = 0.15;  // -.3
-const float WinchSpeedPull = 0.5f;
-const float WinchSpeedPush = -0.5f;
+const float WinchSpeedPull = 0.3f;   //0.5f
+const float WinchSpeedPush = -0.3f;  //-0.5f
 }  // namespace AlgeeIntakeConstants
 
 namespace CoralIntakeConstants {
