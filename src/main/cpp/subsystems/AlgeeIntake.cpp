@@ -32,9 +32,11 @@ AlgeeIntake::AlgeeIntake() {
 void AlgeeIntake::HoldAlgeeInit() {
   m_algaeIntakeMotorEncoder.SetPosition(1000);
   m_intakeMotorHoldingPosition = m_algaeIntakeMotorEncoder.GetPosition();
+  dbgln("position set to 1000")
 }
 
 void AlgeeIntake::HoldAlgeePeriodic() {
+  dbgln(currentlySelectedIntakeCommand);
   switch (currentlySelectedIntakeCommand)
   {
   case holdAlgae: {
@@ -48,15 +50,16 @@ void AlgeeIntake::HoldAlgeePeriodic() {
       
       if (currentPosition < (m_intakeMotorHoldingPosition-positionTargetTollerence)) {   // if less than target position
         if (error >= maxSpeedErrorAmmount) {   // if large error, set speed to max
-          speed = 1.0;
+          speed = 0.5;
         } else {    // else calculate error and ammount of motor speed to remove error
           correctionVal = pVal * error;
           correctionVal = correctionVal * -1;      /////////////// if it corrects backward, remove -1 from this line and put in "too large correction" code
         }
         m_algeeIntakeMotorController.Set(correctionVal);
+       
       } else if (currentPosition >= (m_intakeMotorHoldingPosition + positionTargetTollerence)) {        // else if greater than the target position
         if (error >= maxSpeedErrorAmmount) {   // if large error, set speed to max
-          speed = 1.0;
+          speed = 0.5;
           correctionVal = speed;
         } else {    // else calculate error and ammount of motor speed to remove error
           correctionVal = pVal * error;
@@ -64,6 +67,7 @@ void AlgeeIntake::HoldAlgeePeriodic() {
         }
         m_algeeIntakeMotorController.Set(correctionVal);
       }
+       dbgln(correctionVal)
     }
   break;
     
@@ -82,7 +86,9 @@ void AlgeeIntake::HoldAlgeePeriodic() {
   }
 }
 
-void AlgeeIntake::HoldAlgeeEnd() {}
+void AlgeeIntake::HoldAlgeeEnd() {
+dbgln("function ended")
+}
 
 
 void AlgeeIntake::Periodic() {

@@ -29,6 +29,7 @@
 #include "commands/WinchExtendCommand.h"
 #include "commands/WinchRetractCommand.h"
 #include "commands/home.h"
+#include "commands/HoldAlgee.h"
 #include "subsystems/DriveSubsystem.h"
 
 using namespace DriveConstants;
@@ -118,15 +119,18 @@ void RobotContainer::ConfigureButtonBindings() {
                        frc::XboxController::Button::kRightBumper)
       .WhileTrue(new frc2::RunCommand([this] { m_drive.SetX(); }, {&m_drive}));
       // xbox controller mapping
+  // if((!m_operatorController.GetRawButton(OIControllMapping::intakeAlgae) && !m_operatorController.GetRawButton(OIControllMapping::outtakeAlgae))){
+  //   frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae && OIControllMapping::outtakeAlgae)
+  //       .WhileFalse(HoldAlgee(&m_intakeAlgae).ToPtr());
+  // }else{
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
+        .WhileTrue(IntakeAlgae(&m_intakeAlgae).ToPtr());
 
-  frc2::JoystickButton(&m_operatorController, OIControllMapping::intakeAlgae)
-      .WhileTrue(IntakeAlgae(&m_intakeAlgae).ToPtr());
-
-  frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
-      .WhileTrue(OuttakeAlgae(&m_intakeAlgae).ToPtr());
-
-  frc2::JoystickButton(&m_operatorController, OIControllMapping::winchUp)
-      .WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::outtakeAlgae)
+        .WhileTrue(OuttakeAlgae(&m_intakeAlgae).ToPtr());
+  // }
+    frc2::JoystickButton(&m_operatorController, OIControllMapping::winchUp)
+        .WhileTrue(WinchExtendCommand(&m_intakeAlgae).ToPtr());
 
   //[Trevor] This is the worst thing I have ever written
   frc2::Trigger{[this]() {
