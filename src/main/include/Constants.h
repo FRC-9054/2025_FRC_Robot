@@ -129,8 +129,8 @@ const int driveY = OIConstants::leftYAxis;
 const int driveRotate = OIConstants::rightXAxis;
 const int setBreaks = OIConstants::rightBumper;
 // Operator
-const int intakeAlgae = OIConstants::xButton;
-const int outtakeAlgae = OIConstants::aButton;
+const int intakeAlgae = OIConstants::aButton;
+const int outtakeAlgae = OIConstants::xButton;
 const int intakeCoral = OIConstants::leftBumper;
 const int outtakeCoral = OIConstants::leftTrigger;
 const int elevatorUp = OIConstants::yButton;
